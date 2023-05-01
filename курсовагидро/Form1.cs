@@ -27,18 +27,31 @@ namespace курсовагидро
         {
             public string Name { get; set; }
             public int Length { get; set; }
-            public bool vpad { get; set; }
+            public bool Vpad { get; set; }
+            public double Flow { get; set; }
+            public double BasinArea { get; set; }
+            public string Location { get; set; }
+            public bool Navigable { get; set; }
+            public string Countries { get; set; }
         }
+
         public class Lake
         {
             public string Name { get; set; }
             public int Length { get; set; }
+            public int Depth { get; set; }
+            public double Volume { get; set; }
+            public string Countries { get; set; }
         }
+
         public class Sea
         {
             public string Name { get; set; }
             public int Length { get; set; }
-            public bool vpad { get; set; }
+            public bool Vpad { get; set; }
+            public double Volume { get; set; }
+            public double AverageDepth { get; set; }
+            public string Countries { get; set; }
         }
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
@@ -48,50 +61,57 @@ namespace курсовагидро
         private void Form1_Load(object sender, EventArgs e)
         {
             // Створити список річок
-
+         
 
             // Додати річки до списку
-            rivers.Add(new River { Name = "Дніпро", Length = 2200,vpad = true });
-            rivers.Add(new River { Name = "Дунай", Length = 2860 ,vpad = true});
-            rivers.Add(new River { Name = "Волга", Length = 3530 ,vpad =  false});
-            lakes.Add(new Lake { Name = "Венеція", Length = 2200 });
-            lakes.Add(new Lake { Name = "Байкал", Length = 2200 });
-            lakes.Add(new Lake { Name = "Вікторія", Length = 2200 });
-            seas.Add(new Sea { Name = "Чорне", Length = 2200, vpad = true });
-            seas.Add(new Sea { Name = "Азовське", Length = 2200, vpad = false });
-            seas.Add(new Sea { Name = "Мертве", Length = 2200, vpad = false });
+            rivers.Add(new River { Name = "Дніпро", Length = 2200, Vpad = true, Flow = 1738, BasinArea = 504000, Location = "Europe", Navigable = true, Countries = "Ukraine, Russia, Belarus" });
+            rivers.Add(new River { Name = "Дунай", Length = 2860, Vpad = true, Flow = 2000, BasinArea = 817000, Location = "Europe", Navigable = true, Countries = "Germany, Austria, Slovakia, Hungary, Croatia, Serbia, Romania, Bulgaria, Ukraine" });
+            rivers.Add(new River { Name = "Волга", Length = 3530, Vpad = false, Flow = 2500, BasinArea = 1390000, Location = "Europe", Navigable = true, Countries = "Russia" });
 
-            // Додати назви озер до комбо-боксу
+            lakes.Add(new Lake { Name = "Венеція", Length = 54, Depth = 5, Volume = 35.5, Countries = "Italy" });
+            lakes.Add(new Lake { Name = "Байкал", Length = 636, Depth = 1637, Volume = 23600, Countries = "Russia" });
+            lakes.Add(new Lake { Name = "Вікторія", Length = 322, Depth = 84, Volume = 2850, Countries = "Uganda, Kenya, Tanzania" });
+
+            seas.Add(new Sea { Name = "Чорне", Length = 580, Vpad = true, Volume = 547000, AverageDepth = 1240, Countries = "Ukraine, Russia, Turkey, Romania, Bulgaria, Georgia" });
+            seas.Add(new Sea { Name = "Азовське", Length = 360, Vpad = false, Volume = 11100, AverageDepth = 7, Countries = "Russia, Ukraine" });
+            seas.Add(new Sea { Name = "Мертве", Length = 50, Vpad = false, Volume = 11100, AverageDepth = 7, Countries = "Russia, Ukraine" });
+
+
 
             dataGridView1.Columns.Add("Name", "Назва");
             dataGridView1.Columns.Add("Area", "Площа (км²)");
+            dataGridView1.Columns.Add("Vpad", "Впадає");
+            dataGridView1.Columns.Add("Depth", "Глибина (км²)");
+            dataGridView1.Columns.Add("Location", "Місце");
+            dataGridView1.Columns.Add("Flow", "Flow (км²)");
             dataGridView1.Columns["Name"].Width = 150;
             dataGridView1.Columns["Area"].Width = 100;
+            dataGridView1.Columns["Vpad"].Width = 100;
+            dataGridView1.Columns["Depth"].Width = 100;
+            dataGridView1.Columns["Location"].Width = 100;
 
             // Додати назви морів до комбо-боксу та рядки до таблиці
 
 
-            dataGridView1.Columns.Add("Name", "Назва");
-            dataGridView1.Columns.Add("Length", "Довжина (км)");
-            dataGridView1.Columns["Name"].Width = 150;
-            dataGridView1.Columns["Length"].Width = 100;
             // Додати назви річок до комбо-боксу
 
             comboBox1.Items.Add("Річки");
             comboBox1.Items.Add("Озера");
             comboBox1.Items.Add("Моря");
-            foreach (River river in rivers)
-            {
-                dataGridView1.Rows.Add(river.Name, river.Length);
-            }
-
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             string selectedWaterBody = comboBox1.SelectedItem.ToString();
-          
-
+            dataGridView1.Rows.Clear();
+            if (selectedWaterBody == "Річки")
+            {
+                foreach (River river in rivers)
+                {
+                    dataGridView1.Rows.Add(river.Name, river.Length, river.Vpad, river.Location);
+                }
+            }
             if (selectedWaterBody == "Річки")
             {
                 // Вивести інформацію про всі річки в RichTextBox
@@ -104,7 +124,7 @@ namespace курсовагидро
                     {
                     if (checkBox1.Checked)
                     {
-                        if (river.vpad == true)
+                        if (river.Vpad == true)
                         {
                             richTextBox1.AppendText("Назва: " + river.Name + "\n");
                             richTextBox1.AppendText("Довжина: " + river.Length.ToString() + " км\n");
@@ -135,7 +155,7 @@ namespace курсовагидро
                 {
                     if (checkBox2.Checked)
                     {
-                        if (sea.vpad == true)
+                        if (sea.Vpad == true)
                         {
 
                    
@@ -160,7 +180,7 @@ namespace курсовагидро
                 richTextBox1.Clear();
                 foreach (River river in rivers)
                 {
-                    if (river.vpad == true)
+                    if (river.Vpad == true)
                     {
                         richTextBox1.AppendText("Назва: " + river.Name + "\n");
                         richTextBox1.AppendText("Довжина: " + river.Length.ToString() + " км\n");
