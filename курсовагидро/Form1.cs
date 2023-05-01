@@ -38,6 +38,7 @@ namespace курсовагидро
         {
             public string Name { get; set; }
             public int Length { get; set; }
+            public bool vpad { get; set; }
         }
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
@@ -56,9 +57,9 @@ namespace курсовагидро
             lakes.Add(new Lake { Name = "Венеція", Length = 2200 });
             lakes.Add(new Lake { Name = "Байкал", Length = 2200 });
             lakes.Add(new Lake { Name = "Вікторія", Length = 2200 });
-            seas.Add(new Sea { Name = "Чорне", Length = 2200 });
-            seas.Add(new Sea { Name = "Азовське", Length = 2200 });
-            seas.Add(new Sea { Name = "Мертве", Length = 2200 });
+            seas.Add(new Sea { Name = "Чорне", Length = 2200, vpad = true });
+            seas.Add(new Sea { Name = "Азовське", Length = 2200, vpad = false });
+            seas.Add(new Sea { Name = "Мертве", Length = 2200, vpad = false });
 
             // Додати назви озер до комбо-боксу
 
@@ -89,6 +90,7 @@ namespace курсовагидро
         private void button1_Click(object sender, EventArgs e)
         {
             string selectedWaterBody = comboBox1.SelectedItem.ToString();
+          
 
             if (selectedWaterBody == "Річки")
             {
@@ -131,7 +133,19 @@ namespace курсовагидро
                 richTextBox1.Clear();
                 foreach (Sea sea in seas)
                 {
-                    richTextBox1.AppendText("Назва: " + sea.Name + "\n");
+                    if (checkBox2.Checked)
+                    {
+                        if (sea.vpad == true)
+                        {
+
+                   
+                            richTextBox1.AppendText("Назва: " + sea.Name + "\n");
+                    }
+                    }
+                    else
+                    {
+                        richTextBox1.AppendText("Назва: " + sea.Name + "\n");
+                    }
                 }
             }
         }
