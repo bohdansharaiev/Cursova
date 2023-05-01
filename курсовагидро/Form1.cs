@@ -105,11 +105,53 @@ namespace курсовагидро
         {
             string selectedWaterBody = comboBox1.SelectedItem.ToString();
             dataGridView1.Rows.Clear();
+           
+
+
+
+
+
+
+
+
+
+         
             if (selectedWaterBody == "Річки")
             {
                 foreach (River river in rivers)
                 {
-                    dataGridView1.Rows.Add(river.Name, river.Length, river.Vpad, river.Location);
+                    if (checkBox1.Checked)
+                    {
+                        // Перевірити, чи впадає річка в море
+
+                        // Вивести інформацію про всі річки в RichTextBox
+
+                       
+                            if (river.Vpad == true)
+                            {
+                                dataGridView1.Rows.Add(river.Name, river.Length, river.Vpad, river.Location);
+                            }
+                        
+                    }
+                    else
+                    {
+                        dataGridView1.Rows.Add(river.Name, river.Length, river.Vpad, river.Location);
+                    }
+                }
+            }
+            if (selectedWaterBody == "Озера")
+            {
+
+                foreach (Lake lake in lakes)
+                {
+                    dataGridView1.Rows.Add(lake.Name, lake.Length,lake.Countries);
+                }
+            }
+            if (selectedWaterBody == "Моря")
+            {
+                foreach (Sea sear in seas)
+                {
+                    dataGridView1.Rows.Add(sear.Name, sear.Length, sear.Vpad, sear.Countries);
                 }
             }
             if (selectedWaterBody == "Річки")
@@ -191,6 +233,11 @@ namespace курсовагидро
         }
     }
 }
+
+
+
+
+
 
 
 
