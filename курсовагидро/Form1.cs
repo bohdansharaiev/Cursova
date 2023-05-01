@@ -27,6 +27,7 @@ namespace курсовагидро
         {
             public string Name { get; set; }
             public int Length { get; set; }
+            public bool vpad { get; set; }
         }
         public class Lake
         {
@@ -49,15 +50,15 @@ namespace курсовагидро
 
 
             // Додати річки до списку
-            rivers.Add(new River { Name = "Дніпро", Length = 2200 });
-            rivers.Add(new River { Name = "Дунай", Length = 2860 });
-            rivers.Add(new River { Name = "Волга", Length = 3530 });
-            lakes.Add(new Lake { Name = "Венеція" });
-            lakes.Add(new Lake { Name = "Байкал" });
-            lakes.Add(new Lake { Name = "Вікторія" });
-            seas.Add(new Sea { Name = "Чорне" });
-            seas.Add(new Sea { Name = "Азовське" });
-            seas.Add(new Sea { Name = "Мертве" });
+            rivers.Add(new River { Name = "Дніпро", Length = 2200,vpad = true });
+            rivers.Add(new River { Name = "Дунай", Length = 2860 ,vpad = true});
+            rivers.Add(new River { Name = "Волга", Length = 3530 ,vpad =  false});
+            lakes.Add(new Lake { Name = "Венеція", Length = 2200 });
+            lakes.Add(new Lake { Name = "Байкал", Length = 2200 });
+            lakes.Add(new Lake { Name = "Вікторія", Length = 2200 });
+            seas.Add(new Sea { Name = "Чорне", Length = 2200 });
+            seas.Add(new Sea { Name = "Азовське", Length = 2200 });
+            seas.Add(new Sea { Name = "Мертве", Length = 2200 });
 
             // Додати назви озер до комбо-боксу
 
@@ -92,11 +93,26 @@ namespace курсовагидро
             if (selectedWaterBody == "Річки")
             {
                 // Вивести інформацію про всі річки в RichTextBox
-                richTextBox1.Clear();
-                foreach (River river in rivers)
-                {
-                    richTextBox1.AppendText("Назва: " + river.Name + "\n");
-                    richTextBox1.AppendText("Довжина: " + river.Length.ToString() + " км\n");
+           
+                    // Перевірити, чи впадає річка в море
+
+                    // Вивести інформацію про всі річки в RichTextBox
+                    richTextBox1.Clear();
+                    foreach (River river in rivers)
+                    {
+                    if (checkBox1.Checked)
+                    {
+                        if (river.vpad == true)
+                        {
+                            richTextBox1.AppendText("Назва: " + river.Name + "\n");
+                            richTextBox1.AppendText("Довжина: " + river.Length.ToString() + " км\n");
+                        }
+                    }
+                    else
+                    {
+                        richTextBox1.AppendText("Назва: " + river.Name + "\n");
+                        richTextBox1.AppendText("Довжина: " + river.Length.ToString() + " км\n");
+                    }
                 }
             }
             else if (selectedWaterBody == "Озера")
@@ -119,8 +135,29 @@ namespace курсовагидро
                 }
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                // Перевірити, чи впадає річка в море
+
+                // Вивести інформацію про всі річки в RichTextBox
+                richTextBox1.Clear();
+                foreach (River river in rivers)
+                {
+                    if (river.vpad == true)
+                    {
+                        richTextBox1.AppendText("Назва: " + river.Name + "\n");
+                        richTextBox1.AppendText("Довжина: " + river.Length.ToString() + " км\n");
+                    }
+                }
+            }
+
+        }
     }
 }
+
 
 
 
