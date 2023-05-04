@@ -23,6 +23,7 @@ namespace курсовагидро
 
 
         }
+       
         public class River
         {
             public string Name { get; set; }
@@ -103,19 +104,19 @@ namespace курсовагидро
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string selectedWaterBody = comboBox1.SelectedItem.ToString();
-            dataGridView1.Rows.Clear();
            
+            dataGridView1.Rows.Clear();
 
 
 
 
 
 
+            string selectedWaterBody = comboBox1.SelectedItem.ToString();
 
 
 
-         
+
             if (selectedWaterBody == "Річки")
             {
                 foreach (River river in rivers)
@@ -214,24 +215,114 @@ namespace курсовагидро
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (checkBox1.Checked)
+            string selectedWaterBody = comboBox1.SelectedItem.ToString();
+            if (selectedWaterBody == "Річки")
             {
-                // Перевірити, чи впадає річка в море
+                string name = textBox1.Text;
+                River newRiver = new River { Name = name };
 
-                // Вивести інформацію про всі річки в RichTextBox
-                richTextBox1.Clear();
+                rivers.Add(newRiver);
+            }
+            else if (selectedWaterBody == "Озера")
+            {
+                string name = textBox1.Text;
+                Lake newLake = new Lake { Name = name };
+
+                lakes.Add(newLake);
+            }
+            else if (selectedWaterBody == "Моря")
+            {
+
+                string name = textBox1.Text;
+                Sea newSea = new Sea { Name = name };
+
+                seas.Add(newSea);
+            }
+            }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string selectedWaterBody = comboBox1.SelectedItem.ToString();
+            if (selectedWaterBody == "Річки")
+            {
+                string name = textBox2.Text;
+
+                River riverToDelete = null;
                 foreach (River river in rivers)
                 {
-                    if (river.Vpad == true)
+                    if (river.Name == name)
                     {
-                        richTextBox1.AppendText("Назва: " + river.Name + "\n");
-                        richTextBox1.AppendText("Довжина: " + river.Length.ToString() + " км\n");
+                        riverToDelete = river;
+                        break;
+                    }
+                }
+
+                if (riverToDelete != null)
+                {
+                    rivers.Remove(riverToDelete);
+                    dataGridView1.Rows.Clear();
+                    foreach (River river in rivers)
+                    {
+                        dataGridView1.Rows.Add(river.Name);
                     }
                 }
             }
 
+
+
+            string selectedWaterBody2 = comboBox1.SelectedItem.ToString();
+            if (selectedWaterBody2 == "Озера")
+            {
+                string name = textBox2.Text;
+
+                Lake lakeToDelete = null;
+                foreach (Lake lake in lakes)
+                {
+                    if (lake.Name == name)
+                    {
+                        lakeToDelete = lake;
+                        break;
+                    }
+                }
+
+                if (lakeToDelete != null)
+                {
+                    lakes.Remove(lakeToDelete);
+                    dataGridView1.Rows.Clear();
+                    foreach (Lake lake in lakes)
+                    {
+                        dataGridView1.Rows.Add(lake.Name);
+                    }
+                }
+            }
+            string selectedWaterBody3 = comboBox1.SelectedItem.ToString();
+            if (selectedWaterBody3 == "Моря")
+            {
+                string name = textBox2.Text;
+
+                Sea seaToDelete = null;
+                foreach (Sea sea in seas)
+                {
+                    if (sea.Name == name)
+                    {
+                        seaToDelete = sea;
+                        break;
+                    }
+                }
+
+                if (seaToDelete != null)
+                {
+                    seas.Remove(seaToDelete);
+                    dataGridView1.Rows.Clear();
+                    foreach (Sea sea in seas)
+                    {
+                        dataGridView1.Rows.Add(sea.Name);
+                    }
+                }
+            }
         }
     }
+   
 }
 
 
