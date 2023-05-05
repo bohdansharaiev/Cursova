@@ -112,104 +112,114 @@ namespace курсовагидро
 
 
 
-            string selectedWaterBody = comboBox1.SelectedItem.ToString();
+         
+           
 
-
-
-
-            if (selectedWaterBody == "Річки")
+            if (comboBox1.SelectedItem != null)
             {
-                foreach (River river in rivers)
+                string selectedWaterBody = comboBox1.SelectedItem.ToString();
+                // Ваш код здесь
+
+
+                if (selectedWaterBody == "Річки")
                 {
-                    if (checkBox1.Checked)
+                    foreach (River river in rivers)
                     {
-                        // Перевірити, чи впадає річка в море
+                        if (checkBox1.Checked)
+                        {
+                            // Перевірити, чи впадає річка в море
 
-                        // Вивести інформацію про всі річки в RichTextBox
+                            // Вивести інформацію про всі річки в RichTextBox
 
-                       
+
                             if (river.Vpad == true)
                             {
                                 dataGridView1.Rows.Add(river.Name, river.Length, river.Vpad, river.Location);
                             }
-                        
-                    }
-                    else
-                    {
-                        dataGridView1.Rows.Add(river.Name, river.Length, river.Vpad, river.Location);
-                    }
-                }
-            }
-            if (selectedWaterBody == "Озера")
-            {
 
-                foreach (Lake lake in lakes)
-                {
-                    dataGridView1.Rows.Add(lake.Name, lake.Length,lake.Countries);
+                        }
+                        else
+                        {
+                            dataGridView1.Rows.Add(river.Name, river.Length, river.Vpad, river.Location);
+                        }
+                    }
                 }
-            }
-            if (selectedWaterBody == "Моря")
-            {
-                foreach (Sea sear in seas)
+                if (selectedWaterBody == "Озера")
                 {
-                    dataGridView1.Rows.Add(sear.Name, sear.Length, sear.Vpad, sear.Countries);
+
+                    foreach (Lake lake in lakes)
+                    {
+                        dataGridView1.Rows.Add(lake.Name, lake.Length, lake.Countries);
+                    }
                 }
-            }
-            if (selectedWaterBody == "Річки")
-            {
-                // Вивести інформацію про всі річки в RichTextBox
-           
+                if (selectedWaterBody == "Моря")
+                {
+                    foreach (Sea sear in seas)
+                    {
+                        dataGridView1.Rows.Add(sear.Name, sear.Length, sear.Vpad, sear.Countries);
+                    }
+                }
+                if (selectedWaterBody == "Річки")
+                {
+                    // Вивести інформацію про всі річки в RichTextBox
+
                     // Перевірити, чи впадає річка в море
 
                     // Вивести інформацію про всі річки в RichTextBox
                     richTextBox1.Clear();
                     foreach (River river in rivers)
                     {
-                    if (checkBox1.Checked)
-                    {
-                        if (river.Vpad == true)
+                        if (checkBox1.Checked)
+                        {
+                            if (river.Vpad == true)
+                            {
+                                richTextBox1.AppendText("Назва: " + river.Name + "\n");
+                                richTextBox1.AppendText("Довжина: " + river.Length.ToString() + " км\n");
+                            }
+                        }
+                        else
                         {
                             richTextBox1.AppendText("Назва: " + river.Name + "\n");
                             richTextBox1.AppendText("Довжина: " + river.Length.ToString() + " км\n");
                         }
                     }
-                    else
+                }
+                else if (selectedWaterBody == "Озера")
+                {
+                    // Вивести інформацію про всі озера в RichTextBox
+                    richTextBox1.Clear();
+                    foreach (Lake lake in lakes)
                     {
-                        richTextBox1.AppendText("Назва: " + river.Name + "\n");
-                        richTextBox1.AppendText("Довжина: " + river.Length.ToString() + " км\n");
+                        richTextBox1.AppendText("Назва: " + lake.Name + "\n");
+                        richTextBox1.AppendText("Довжина: " + lake.Length.ToString() + " км\n");
                     }
                 }
-            }
-            else if (selectedWaterBody == "Озера")
-            {
-                // Вивести інформацію про всі озера в RichTextBox
-                richTextBox1.Clear();
-                foreach (Lake lake in lakes)
+                else if (selectedWaterBody == "Моря")
                 {
-                    richTextBox1.AppendText("Назва: " + lake.Name + "\n");
-                    richTextBox1.AppendText("Довжина: " + lake.Length.ToString() + " км\n");
-                }
-            }
-            else if (selectedWaterBody == "Моря")
-            {
-                // Вивести інформацію про всі моря в RichTextBox
-                richTextBox1.Clear();
-                foreach (Sea sea in seas)
-                {
-                    if (checkBox2.Checked)
+                    // Вивести інформацію про всі моря в RichTextBox
+                    richTextBox1.Clear();
+                    foreach (Sea sea in seas)
                     {
-                        if (sea.Vpad == true)
+                        if (checkBox2.Checked)
                         {
+                            if (sea.Vpad == true)
+                            {
 
-                   
+
+                                richTextBox1.AppendText("Назва: " + sea.Name + "\n");
+                            }
+                        }
+                        else
+                        {
                             richTextBox1.AppendText("Назва: " + sea.Name + "\n");
-                    }
-                    }
-                    else
-                    {
-                        richTextBox1.AppendText("Назва: " + sea.Name + "\n");
+                        }
                     }
                 }
+                
+            }
+            else
+            {
+                MessageBox.Show("Необходимо выбрать водное тело.");
             }
         }
 
@@ -324,7 +334,6 @@ namespace курсовагидро
     }
    
 }
-
 
 
 
