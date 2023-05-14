@@ -32,9 +32,13 @@ namespace курсовагидро
             {
                 Rivers.Add(new River(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToDouble(textBox3.Text), textBox4.Text));
             }
-           else if(comboBox1.SelectedItem == "Озера")
+           if(comboBox1.SelectedItem == "Озера")
             {
                 Lakes.Add(new Lake(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToDouble(textBox3.Text), textBox4.Text));
+            }
+           if (comboBox1.SelectedItem == "Моря")
+            {
+                Seas.Add(new Sea(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToDouble(textBox3.Text), textBox4.Text));
             }
 
         }
