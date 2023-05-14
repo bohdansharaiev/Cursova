@@ -1,0 +1,12 @@
+C:\Users\Богдан\source\repos\курсовагидро\курсовагидро\bin\Debug\курсовагидро.exe.config
+C:\Users\Богдан\source\repos\курсовагидро\курсовагидро\bin\Debug\курсовагидро.exe
+C:\Users\Богдан\source\repos\курсовагидро\курсовагидро\bin\Debug\курсовагидро.pdb
+C:\Users\Богдан\source\repos\курсовагидро\курсовагидро\obj\Debug\курсовагидро.csproj.AssemblyReference.cache
+C:\Users\Богдан\source\repos\курсовагидро\курсовагидро\obj\Debug\курсовагидро.csproj.SuggestedBindingRedirects.cache
+C:\Users\Богдан\source\repos\курсовагидро\курсовагидро\obj\Debug\курсовагидро.Form1.resources
+C:\Users\Богдан\source\repos\курсовагидро\курсовагидро\obj\Debug\курсовагидро.Properties.Resources.resources
+C:\Users\Богдан\source\repos\курсовагидро\курсовагидро\obj\Debug\курсовагидро.csproj.GenerateResource.cache
+C:\Users\Богдан\source\repos\курсовагидро\курсовагидро\obj\Debug\курсовагидро.csproj.CoreCompileInputs.cache
+C:\Users\Богдан\source\repos\курсовагидро\курсовагидро\obj\Debug\курсовагидро.exe
+C:\Users\Богдан\source\repos\курсовагидро\курсовагидро\obj\Debug\курсовагидро.pdb
+C:\Users\Богдан\source\repos\курсовагидро\курсовагидро\obj\Debug\курсовагидро.Form2.resources
