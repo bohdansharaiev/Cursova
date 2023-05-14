@@ -21,11 +21,21 @@ namespace курсовагидро
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            comboBox1.Items.Add("Річки");
+            comboBox1.Items.Add("Озера");
+            comboBox1.Items.Add("Моря");
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Rivers.Add(new River(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToDouble(textBox3.Text), textBox4.Text));
+            if (comboBox1.SelectedItem == "Річки")
+            {
+                Rivers.Add(new River(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToDouble(textBox3.Text), textBox4.Text));
+            }
+           else if(comboBox1.SelectedItem == "Озера")
+            {
+                Lakes.Add(new Lake(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToDouble(textBox3.Text), textBox4.Text));
+            }
 
         }
     }
