@@ -105,7 +105,15 @@ namespace курсовагидро
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Print(Rivers.rivers, Lakes.lakes, Seas.seas);
+            if (comboBox1.SelectedItem != null)
+            {
+               
+                Print(Rivers.rivers, Lakes.lakes, Seas.seas);
+            }
+            else
+            {
+                MessageBox.Show("Виберіть водне тіло");
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
