@@ -15,7 +15,19 @@ namespace курсовагидро
 
     public class Dataclass
     {
+        public static void ClearFile(string filePath)
+        {
+            try
+            {
 
+
+                File.WriteAllText(filePath, string.Empty);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Помилка при експорті даних: " + ex.Message);
+            }
+        }
         public static void ExportData(string filePath)
         {
             try

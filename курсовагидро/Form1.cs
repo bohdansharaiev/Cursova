@@ -39,21 +39,24 @@ namespace курсовагидро
         private void Form1_Load(object sender, EventArgs e)
         {
             // Створити список річок
-
+            Random rand = new Random();
 
             // Додати річки до списку
 
             for(int i = 0; i < 20; i++)
             {
-                Rivers.Add(new River("River", 1500, 200, "Country"));
+               int fr = rand.Next(700, 2000);
+                Rivers.Add(new River("River", fr, 200, "Country"));
             }
             for (int i = 0; i < 20; i++)
             {
-                Lakes.Add(new Lake("Lake", 1500, 200, "Country"));
+                int fl =  rand.Next(700, 2000);
+                Lakes.Add(new Lake("Lake", fl, 200, "Country"));
             }
             for (int i = 0; i < 20; i++)
             {
-                Seas.Add(new Sea("Sea", 1500, 200, "Country"));
+                int fs = rand.Next(700, 2000);
+                Seas.Add(new Sea("Sea", fs, 200, "Country"));
             }
 
 
@@ -221,8 +224,8 @@ namespace курсовагидро
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string filePath = "TextFile1.txt";
-
+            string filePath = textBox1.Text;
+            Dataclass.ClearFile(filePath);
             Dataclass.ExportData(filePath);
         }
     }
