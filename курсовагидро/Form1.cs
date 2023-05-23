@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static курсовагидро.Form1;
 
 namespace курсовагидро
@@ -21,6 +22,7 @@ namespace курсовагидро
         public Form1()
         {
             InitializeComponent();
+            button2.Click += button2_Click;
         }
 
 
@@ -41,13 +43,23 @@ namespace курсовагидро
 
             // Додати річки до списку
 
+            for(int i = 0; i < 20; i++)
+            {
+                Rivers.Add(new River("River", 1500, 200, "Country"));
+            }
+            for (int i = 0; i < 20; i++)
+            {
+                Lakes.Add(new Lake("Lake", 1500, 200, "Country"));
+            }
+            for (int i = 0; i < 20; i++)
+            {
+                Seas.Add(new Sea("Sea", 1500, 200, "Country"));
+            }
 
 
 
-          
 
-
-
+           
 
 
             // Додати назви морів до комбо-боксу та рядки до таблиці
@@ -109,6 +121,7 @@ namespace курсовагидро
             {
                
                 Print(Rivers.rivers, Lakes.lakes, Seas.seas);
+               
             }
             else
             {
@@ -204,6 +217,13 @@ namespace курсовагидро
         {
             frm2 = new Form2();
             frm2.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string filePath = "TextFile1.txt";
+
+            Dataclass.ExportData(filePath);
         }
     }
 }
