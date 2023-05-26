@@ -59,12 +59,14 @@ namespace курсовагидро
                 Seas.Add(new Sea("Sea", fs, 200, "Country"));
             }
 
+          
+                table.Columns.Add("Назва", typeof(string));
+                table.Columns.Add("Страна", typeof(string));
+                table.Columns.Add("Довжина", typeof(int));
+                table.Columns.Add("Flow", typeof(double));
 
-
-
-           
-
-
+            PrintAllBodiesOfWater();
+            textBox3.TextChanged += textBox3_TextChanged;
             // Додати назви морів до комбо-боксу та рядки до таблиці
 
 
@@ -73,9 +75,44 @@ namespace курсовагидро
             comboBox1.Items.Add("Річки");
             comboBox1.Items.Add("Озера");
             comboBox1.Items.Add("Моря");
+            comboBox1.Items.Add("Все");
 
         }
         DataTable table = new DataTable();
+        private void PrintAllBodiesOfWater()
+        {
+            dataGridView1.DataSource = null;
+            table.Rows.Clear();
+            table.Columns.Clear();
+
+            table.Columns.Add("Назва", typeof(string));
+            table.Columns.Add("Страна", typeof(string));
+            table.Columns.Add("Довжина", typeof(int));
+            table.Columns.Add("Flow", typeof(double));
+
+            foreach (River river in Rivers.rivers)
+            {
+                table.Rows.Add(river.Name, river.Countries, river.Length, river.Flow);
+            }
+          
+            foreach (Lake lake in Lakes.lakes)
+            {
+                table.Rows.Add(lake.Name, lake.Countries, lake.Length, lake.Flow);
+            }
+       
+            foreach (Sea sea in Seas.seas)
+            {
+                table.Rows.Add(sea.Name, sea.Countries, sea.Length, sea.Flow);
+            }
+
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridView1.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders);
+
+            dataGridView1.DataSource = table;
+            dataGridView1.Refresh();
+        }
         public void Print(List<River> riversList, List<Lake> lakesList, List<Sea> seasList)
         {
             dataGridView1.DataSource = null;
@@ -108,6 +145,10 @@ namespace курсовагидро
                     table.Rows.Add(sea.Name, sea.Countries, sea.Length, sea.Flow);
                 }
             }
+            if (comboBox1.SelectedItem == "Все")
+            {
+                PrintAllBodiesOfWater();
+            }
 
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -117,7 +158,42 @@ namespace курсовагидро
             dataGridView1.DataSource = table;
             dataGridView1.Refresh();
         }
+        public void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = textBox3.Text.ToLower();
 
+            // Очистити таблицю перед оновленням
+            table.Rows.Clear();
+            if(searchText == null)
+            {
+                table.Rows.Clear();
+            }
+            foreach (River river in Rivers.rivers)
+            {
+                if (river.Name.ToLower().IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    table.Rows.Add(river.Name, river.Countries, river.Length, river.Flow);
+                }
+            }
+
+            foreach (Lake lake in Lakes.lakes)
+            {
+                if (lake.Name.ToLower().IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    table.Rows.Add(lake.Name, lake.Countries, lake.Length, lake.Flow);
+                }
+            }
+
+            foreach (Sea sea in Seas.seas)
+            {
+                if (sea.Name.ToLower().IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    table.Rows.Add(sea.Name, sea.Countries, sea.Length, sea.Flow);
+                }
+            }
+
+            dataGridView1.Refresh();
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             if (comboBox1.SelectedItem != null)
@@ -135,48 +211,44 @@ namespace курсовагидро
         private void button3_Click(object sender, EventArgs e)
         {
             string name = textBox2.Text;
-          
-            if (comboBox1.SelectedItem == "Річки")
+            string selectedType = comboBox1.SelectedItem.ToString();
+            bool deleted = false;
+
+            if (selectedType == "Річки")
             {
                 River riverToDelete = Rivers.rivers.Find(r => r.Name == name);
                 if (riverToDelete != null)
                 {
                     Rivers.rivers.Remove(riverToDelete);
-                    dataGridView1.DataSource = null;
-                    dataGridView1.DataSource = Rivers.rivers;
-                }
-                else
-                {
-                    MessageBox.Show("Невірна назва");
+                    deleted = true;
                 }
             }
-            else if (comboBox1.SelectedItem == "Озера")
+            else if (selectedType == "Озера")
             {
                 Lake lakeToDelete = Lakes.lakes.Find(l => l.Name == name);
                 if (lakeToDelete != null)
                 {
                     Lakes.lakes.Remove(lakeToDelete);
-                    dataGridView1.DataSource = null;
-                    dataGridView1.DataSource = Lakes.lakes;
-                }
-                else
-                {
-                    MessageBox.Show("Невірна назва");
+                    deleted = true;
                 }
             }
-            else if (comboBox1.SelectedItem == "Моря")
+            else if (selectedType == "Моря")
             {
                 Sea seaToDelete = Seas.seas.Find(s => s.Name == name);
                 if (seaToDelete != null)
                 {
                     Seas.seas.Remove(seaToDelete);
-                    dataGridView1.DataSource = null;
-                    dataGridView1.DataSource = Seas.seas;
+                    deleted = true;
                 }
-                else
-                {
-                    MessageBox.Show("Невірна назва");
-                }
+            }
+
+            if (deleted)
+            {
+                Print(Rivers.rivers, Lakes.lakes, Seas.seas);
+            }
+            else
+            {
+                MessageBox.Show("Невірна назва або водне тіло не знайдено.");
             }
         }
 
@@ -194,14 +266,14 @@ namespace курсовагидро
             // Add columns to the table based on the selected item in the combo box
             if (comboBox1.SelectedItem == "Річки")
             {
-                table.Columns.Add("Назва", typeof(string));
+                table.Columns.Add("Назва(річки)", typeof(string));
                 table.Columns.Add("Страна", typeof(string));
                 table.Columns.Add("Довжина", typeof(int));
                 table.Columns.Add("Flow", typeof(double));
             }
             else if (comboBox1.SelectedItem == "Озера")
             {
-                table.Columns.Add("Назва", typeof(string));
+                table.Columns.Add("Назва(озера)", typeof(string));
                 table.Columns.Add("Страна", typeof(string));
                 table.Columns.Add("Довжина", typeof(int));
                 table.Columns.Add("Flow", typeof(double));
@@ -209,7 +281,7 @@ namespace курсовагидро
 
             else if (comboBox1.SelectedItem == "Моря")
             {
-                table.Columns.Add("Назва", typeof(string));
+                table.Columns.Add("Назва(моря)", typeof(string));
                 table.Columns.Add("Страна", typeof(string));
                 table.Columns.Add("Довжина", typeof(int));
                 table.Columns.Add("Площа", typeof(double));
@@ -218,8 +290,13 @@ namespace курсовагидро
 
         private void button4_Click(object sender, EventArgs e)
         {
-            frm2 = new Form2();
-            frm2.ShowDialog();
+            // Створюємо новий екземпляр Form2 і присвоюємо його змінній frm
+            Form2 form2 = new Form2();
+           
+            form2.Show();
+     
+
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -228,6 +305,9 @@ namespace курсовагидро
             Dataclass.ClearFile(filePath);
             Dataclass.ExportData(filePath);
         }
+
+       
+
     }
 }
 
