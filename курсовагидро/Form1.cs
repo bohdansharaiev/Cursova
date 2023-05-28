@@ -75,7 +75,7 @@ namespace курсовагидро
             comboBox1.Items.Add("Річки");
             comboBox1.Items.Add("Озера");
             comboBox1.Items.Add("Моря");
-            comboBox1.Items.Add("Все");
+         
 
         }
         DataTable table = new DataTable();
@@ -148,7 +148,7 @@ namespace курсовагидро
                     table.Rows.Add(sea.Name, sea.Countries, sea.Length, sea.Flow);
                 }
             }
-            if (comboBox1.SelectedItem == "Все")
+            if (comboBox1.SelectedItem == null)
             {
                 PrintAllBodiesOfWater();
             }
@@ -167,48 +167,86 @@ namespace курсовагидро
 
             // Очистити таблицю перед оновленням
             table.Rows.Clear();
-            if(searchText == null)
-            {
-                table.Rows.Clear();
-            }
-            foreach (River river in Rivers.rivers)
-            {
-                if (river.Name.ToLower().IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
-                {
-                    table.Rows.Add(river.Name, river.Countries, river.Length, river.Flow);
-                }
-            }
 
-            foreach (Lake lake in Lakes.lakes)
+            if (searchText != null)
             {
-                if (lake.Name.ToLower().IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
+                if (comboBox1.SelectedItem == "Річки")
                 {
-                    table.Rows.Add(lake.Name, lake.Countries, lake.Length, lake.Flow);
+                    foreach (River river in Rivers.rivers)
+                    {
+                        if (river.Name.ToLower().IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
+                        {
+                            table.Rows.Add(river.Name, river.Countries, river.Length, river.Flow, river.AnnualFlow);
+                        }
+                    }
                 }
-            }
-
-            foreach (Sea sea in Seas.seas)
-            {
-                if (sea.Name.ToLower().IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
+                else if (comboBox1.SelectedItem == "Озера")
                 {
-                    table.Rows.Add(sea.Name, sea.Countries, sea.Length, sea.Flow);
+                    foreach (Lake lake in Lakes.lakes)
+                    {
+                        if (lake.Name.ToLower().IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
+                        {
+                            table.Rows.Add(lake.Name, lake.Countries, lake.Length, lake.Flow);
+                        }
+                    }
                 }
-            }
+                else if (comboBox1.SelectedItem == "Моря")
+                {
+                    foreach (Sea sea in Seas.seas)
+                    {
+                        if (sea.Name.ToLower().IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
+                        {
+                            table.Rows.Add(sea.Name, sea.Countries, sea.Length, sea.Flow);
+                        }
+                    }
+                }
+                else if (string.IsNullOrEmpty(comboBox1.Text))
+                {
+                    // Пошук по всіх елементах списків
+                    foreach (River river in Rivers.rivers)
+                    {
+                        if (river.Name.ToLower().IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
+                        {
+                            table.Rows.Add(river.Name, river.Countries, river.Length, river.Flow, river.AnnualFlow);
+                        }
+                    }
 
-            dataGridView1.Refresh();
-        }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (comboBox1.SelectedItem != null)
-            {
-               
-                Print(Rivers.rivers, Lakes.lakes, Seas.seas);
-               
+                    foreach (Lake lake in Lakes.lakes)
+                    {
+                        if (lake.Name.ToLower().IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
+                        {
+                            table.Rows.Add(lake.Name, lake.Countries, lake.Length, lake.Flow);
+                        }
+                    }
+
+                    foreach (Sea sea in Seas.seas)
+                    {
+                        if (sea.Name.ToLower().IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
+                        {
+                            table.Rows.Add(sea.Name, sea.Countries, sea.Length, sea.Flow);
+                        }
+                    }
+                }
+
             }
             else
             {
-                MessageBox.Show("Виберіть водне тіло");
+
+
+                if (string.IsNullOrEmpty(comboBox1.Text))
+                {
+                    Print(Rivers.rivers, Lakes.lakes, Seas.seas);
+                }
+
             }
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+           
+               
+                Print(Rivers.rivers, Lakes.lakes, Seas.seas);
+               
+          
         }
 
         private void button3_Click(object sender, EventArgs e)
