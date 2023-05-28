@@ -79,6 +79,7 @@ namespace курсовагидро
 
         }
         DataTable table = new DataTable();
+        // Оновлений метод друку всіх водних об'єктів
         private void PrintAllBodiesOfWater()
         {
             dataGridView1.DataSource = null;
@@ -89,20 +90,21 @@ namespace курсовагидро
             table.Columns.Add("Страна", typeof(string));
             table.Columns.Add("Довжина", typeof(int));
             table.Columns.Add("Flow", typeof(double));
+            table.Columns.Add("Річний стік", typeof(double)); // Додати стовпець для річного стоку
 
             foreach (River river in Rivers.rivers)
             {
-                table.Rows.Add(river.Name, river.Countries, river.Length, river.Flow);
+                table.Rows.Add(river.Name, river.Countries, river.Length, river.Flow, river.AnnualFlow);
             }
-          
+
             foreach (Lake lake in Lakes.lakes)
             {
-                table.Rows.Add(lake.Name, lake.Countries, lake.Length, lake.Flow);
+                table.Rows.Add(lake.Name, lake.Countries, lake.Length, lake.Flow); // Поле "Річний стік" для озер залишаємо порожнім
             }
-       
+
             foreach (Sea sea in Seas.seas)
             {
-                table.Rows.Add(sea.Name, sea.Countries, sea.Length, sea.Flow);
+                table.Rows.Add(sea.Name, sea.Countries, sea.Length, sea.Flow); // Поле "Річний стік" для морів залишаємо порожнім
             }
 
             dataGridView1.AllowUserToAddRows = false;
@@ -123,12 +125,13 @@ namespace курсовагидро
             table.Columns.Add("Страна", typeof(string));
             table.Columns.Add("Довжина", typeof(int));
             table.Columns.Add("Flow", typeof(double));
+            table.Columns.Add("Річний стік", typeof(double)); // Додати стовпець для річного стоку
 
             if (comboBox1.SelectedItem == "Річки")
             {
                 foreach (River river in riversList)
                 {
-                    table.Rows.Add(river.Name, river.Countries, river.Length, river.Flow);
+                    table.Rows.Add(river.Name, river.Countries, river.Length, river.Flow,river.AnnualFlow);
                 }
             }
             if (comboBox1.SelectedItem == "Озера")
