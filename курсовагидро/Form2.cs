@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialSkin.Controls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +14,7 @@ using static курсовагидро.Form1;
 
 namespace курсовагидро
 {
-    public partial class Form2 : Form
+    public partial class Form2 : MaterialForm
     {
         public Form2()
         {

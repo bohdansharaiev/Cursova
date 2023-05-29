@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialSkin.Controls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,7 +16,7 @@ using static курсовагидро.Form1;
 namespace курсовагидро
 {
 
-    public partial class Form1 : Form
+    public partial class Form1 : MaterialForm
     {
         Form2 frm2;
 
@@ -23,6 +24,7 @@ namespace курсовагидро
         {
             InitializeComponent();
             button2.Click += button2_Click;
+            
         }
 
 
@@ -332,16 +334,18 @@ namespace курсовагидро
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string filePath = textBox1.Text;
+            string filePath = "C:\\Users\\Богдан\\Desktop\\data.txt";
             Dataclass.ClearFile(filePath);
             Dataclass.ExportData(filePath);
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            string filePath = textBox1.Text;
+            string filePath = "C:\\Users\\Богдан\\Desktop\\data.txt";
             Dataclass.LoadRiversFromFile(filePath);
         }
+
+       
     }
 }
 
