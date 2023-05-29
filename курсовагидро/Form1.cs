@@ -40,14 +40,11 @@ namespace курсовагидро
         {
             // Створити список річок
             Random rand = new Random();
-
+            string filePath = "C:\\Users\\Богдан\\Desktop\\data.txt";
+            Dataclass.LoadRiversFromFile(filePath);
             // Додати річки до списку
 
-            for(int i = 0; i < 20; i++)
-            {
-               int fr = rand.Next(700, 2000);
-                Rivers.Add(new River("River", fr, 200, "Country"));
-            }
+       
             for (int i = 0; i < 20; i++)
             {
                 int fl =  rand.Next(700, 2000);
@@ -347,8 +344,11 @@ namespace курсовагидро
             Dataclass.ExportData(filePath);
         }
 
-       
-
+        private void button5_Click(object sender, EventArgs e)
+        {
+            string filePath = textBox1.Text;
+            Dataclass.LoadRiversFromFile(filePath);
+        }
     }
 }
 

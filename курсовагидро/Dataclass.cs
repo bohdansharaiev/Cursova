@@ -55,7 +55,56 @@ namespace курсовагидро
             }
         }
 
+        public static void SaveRiversToFile(string filePath)
+        {
+            try
+            {
+                using (StreamWriter writer = new StreamWriter(filePath))
+                {
+                    foreach (var river in Rivers.rivers)
+                    {
+                        writer.WriteLine($"River,{river.Name},{river.Length},{river.Flow},{river.Countries}");
+                    }
+                }
+                MessageBox.Show($"Річки збережено у файл {filePath}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Помилка при збереженні річок: " + ex.Message);
+            }
+        }
 
+        public static void LoadRiversFromFile(string filePath)
+        {
+            try
+            {
+                List<River> rivers = new List<River>();
+                using (StreamReader reader = new StreamReader(filePath))
+                {
+                    string line;
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        string[] parts = line.Split(',');
+                        if (parts.Length >= 5 && parts[0] == "River")
+                        {
+                            string name = parts[1];
+                            int length = int.Parse(parts[2]);
+                            double flow = double.Parse(parts[3]);
+                            string countries = parts[4];
+                            River river = new River(name, length, flow, countries);
+                            rivers.Add(river);
+                        }
+                    }
+                }
+                Rivers.rivers = rivers;  // Replace the existing list with the loaded rivers
+                MessageBox.Show($"Річки завантажено з файлу {filePath}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Помилка при завантаженні річок: " + ex.Message);
+            }
+        }
     }
-}
+    }
+
     
