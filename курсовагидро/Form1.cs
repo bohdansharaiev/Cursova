@@ -43,21 +43,13 @@ namespace курсовагидро
             string filePath = "C:\\Users\\Богдан\\Desktop\\data.txt";
             Dataclass.LoadRiversFromFile(filePath);
             // Додати річки до списку
+            Dataclass.LoadLakesFromFile(filePath);
 
-       
-            for (int i = 0; i < 20; i++)
-            {
-                int fl =  rand.Next(700, 2000);
-                Lakes.Add(new Lake("Lake", fl, 200, "Country"));
-            }
-            for (int i = 0; i < 20; i++)
-            {
-                int fs = rand.Next(700, 2000);
-                Seas.Add(new Sea("Sea", fs, 200, "Country"));
-            }
+            Dataclass.LoadSeasFromFile(filePath);
 
-          
-                table.Columns.Add("Назва", typeof(string));
+
+
+            table.Columns.Add("Назва", typeof(string));
                 table.Columns.Add("Страна", typeof(string));
                 table.Columns.Add("Довжина", typeof(int));
                 table.Columns.Add("Flow", typeof(double));
@@ -96,12 +88,12 @@ namespace курсовагидро
 
             foreach (Lake lake in Lakes.lakes)
             {
-                table.Rows.Add(lake.Name, lake.Countries, lake.Length, lake.Flow); // Поле "Річний стік" для озер залишаємо порожнім
+                table.Rows.Add(lake.Name, lake.Countries, lake.Length, lake.Flow, lake.AnnualFlow); // Поле "Річний стік" для озер залишаємо порожнім
             }
 
             foreach (Sea sea in Seas.seas)
             {
-                table.Rows.Add(sea.Name, sea.Countries, sea.Length, sea.Flow); // Поле "Річний стік" для морів залишаємо порожнім
+                table.Rows.Add(sea.Name, sea.Countries, sea.Length, sea.Flow, sea.AnnualFlow); // Поле "Річний стік" для морів залишаємо порожнім
             }
 
             dataGridView1.AllowUserToAddRows = false;
@@ -135,14 +127,14 @@ namespace курсовагидро
             {
                 foreach (Lake lake in lakesList)
                 {
-                    table.Rows.Add(lake.Name, lake.Countries, lake.Length, lake.Flow);
+                    table.Rows.Add(lake.Name, lake.Countries, lake.Length, lake.Flow, lake.AnnualFlow);
                 }
             }
           if (comboBox1.SelectedItem == "Моря")
             {
                 foreach (Sea sea in seasList)
                 {
-                    table.Rows.Add(sea.Name, sea.Countries, sea.Length, sea.Flow);
+                    table.Rows.Add(sea.Name, sea.Countries, sea.Length, sea.Flow, sea.AnnualFlow);
                 }
             }
             if (comboBox1.SelectedItem == null)
@@ -183,7 +175,7 @@ namespace курсовагидро
                     {
                         if (lake.Name.ToLower().IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
                         {
-                            table.Rows.Add(lake.Name, lake.Countries, lake.Length, lake.Flow);
+                            table.Rows.Add(lake.Name, lake.Countries, lake.Length, lake.Flow, lake.AnnualFlow);
                         }
                     }
                 }
@@ -193,7 +185,7 @@ namespace курсовагидро
                     {
                         if (sea.Name.ToLower().IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
                         {
-                            table.Rows.Add(sea.Name, sea.Countries, sea.Length, sea.Flow);
+                            table.Rows.Add(sea.Name, sea.Countries, sea.Length, sea.Flow, sea.AnnualFlow);
                         }
                     }
                 }
@@ -212,7 +204,7 @@ namespace курсовагидро
                     {
                         if (lake.Name.ToLower().IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
                         {
-                            table.Rows.Add(lake.Name, lake.Countries, lake.Length, lake.Flow);
+                            table.Rows.Add(lake.Name, lake.Countries, lake.Length, lake.Flow, lake.AnnualFlow); ;
                         }
                     }
 
@@ -220,7 +212,7 @@ namespace курсовагидро
                     {
                         if (sea.Name.ToLower().IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
                         {
-                            table.Rows.Add(sea.Name, sea.Countries, sea.Length, sea.Flow);
+                            table.Rows.Add(sea.Name, sea.Countries, sea.Length, sea.Flow, sea.AnnualFlow);
                         }
                     }
                 }
@@ -328,11 +320,12 @@ namespace курсовагидро
 
         private void button4_Click(object sender, EventArgs e)
         {
-            // Створюємо новий екземпляр Form2 і присвоюємо його змінній frm
+            
+            // Создаем новый экземпляр Form2 и присваиваем его переменной form2
             Form2 form2 = new Form2();
-           
-            form2.Show();
-     
+
+            // Открываем форму диалога
+            form2.ShowDialog();
 
 
         }
