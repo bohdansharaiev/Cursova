@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialSkin.Controls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +11,7 @@ using System.Windows.Forms;
 
 namespace курсовагидро
 {
-    public partial class Form3 : Form
+    public partial class Form3 : MaterialForm
     {
         public bool AddRiver { get; set; }
 
@@ -18,6 +19,7 @@ namespace курсовагидро
         {
             InitializeComponent();
             AddRiver = false; // Default value is set to false
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -26,7 +28,7 @@ namespace курсовагидро
             this.DialogResult = DialogResult.OK; // Set the dialog result to OK
             this.Close(); // Close the form
         }
-
+      
         private void button2_Click(object sender, EventArgs e)
         {
             AddRiver = false; // Set the flag to indicate that no action should be taken

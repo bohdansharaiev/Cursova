@@ -1,4 +1,5 @@
-﻿using MaterialSkin.Controls;
+﻿using MaterialSkin;
+using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,7 +25,9 @@ namespace курсовагидро
         {
             InitializeComponent();
             button2.Click += button2_Click;
-            
+            dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
+
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -141,7 +144,84 @@ namespace курсовагидро
             dataGridView1.DataSource = table;
             dataGridView1.Refresh();
         }
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0) // Проверяем, что ячейка не заголовок
+            {
+                // Получаем выбранный элемент
+                var selectedRow = dataGridView1.Rows[e.RowIndex];
+                var name = selectedRow.Cells["Назва"].Value.ToString();
+                var country = selectedRow.Cells["Страна"].Value.ToString();
 
+                // Отображаем форму подтверждения удаления
+                var confirmForm = new Form3();
+                var confirmResult = confirmForm.ShowDialog();
+
+                if (confirmResult == DialogResult.OK && confirmForm.AddRiver)
+                {
+                    // Удаляем элемент из списка
+                    if (comboBox1.SelectedItem != null) // Проверяем, что комбобокс выбран
+                    {
+                        // Удаляем элемент из списка
+                        if (comboBox1.SelectedItem.ToString() == "Річки")
+                        {
+                            var riverToRemove = Rivers.rivers.Find(river => river.Name == name && river.Countries == country);
+                            if (riverToRemove != null)
+                            {
+                                Rivers.rivers.Remove(riverToRemove);
+                            }
+                            Print(Rivers.rivers, Lakes.lakes, Seas.seas);
+                        }
+                        else if (comboBox1.SelectedItem.ToString() == "Озера")
+                        {
+                            var lakeToRemove = Lakes.lakes.Find(lake => lake.Name == name && lake.Countries == country);
+                            if (lakeToRemove != null)
+                            {
+                                Lakes.lakes.Remove(lakeToRemove);
+                            }
+                            Print(Rivers.rivers, Lakes.lakes, Seas.seas);
+                        }
+                        else if (comboBox1.SelectedItem.ToString() == "Моря")
+                        {
+                            var seaToRemove = Seas.seas.Find(sea => sea.Name == name && sea.Countries == country);
+                            if (seaToRemove != null)
+                            {
+                                Seas.seas.Remove(seaToRemove);
+                            }
+                            Print(Rivers.rivers, Lakes.lakes, Seas.seas);
+                        }
+                        MessageBox.Show("Водойму видалено");
+                    }
+                    else
+                    {
+                        // Удаляем элемент из всех списков
+                        var riverToRemove = Rivers.rivers.Find(river => river.Name == name && river.Countries == country);
+                        if (riverToRemove != null)
+                        {
+                            Rivers.rivers.Remove(riverToRemove);
+                        }
+                        var lakeToRemove = Lakes.lakes.Find(lake => lake.Name == name && lake.Countries == country);
+                        if (lakeToRemove != null)
+                        {
+                            Lakes.lakes.Remove(lakeToRemove);
+                        }
+                        var seaToRemove = Seas.seas.Find(sea => sea.Name == name && sea.Countries == country);
+                        if (seaToRemove != null)
+                        {
+                            Seas.seas.Remove(seaToRemove);
+                        }
+                        // Обновляем таблицу
+                        PrintAllBodiesOfWater();
+
+                        MessageBox.Show("Водойму видалено");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Відміна");
+                }
+            }
+        }
         public void textBox3_TextChanged(object sender, EventArgs e)
         {
             string searchText = textBox3.Text.ToLower();
