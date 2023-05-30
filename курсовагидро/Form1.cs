@@ -18,24 +18,13 @@ namespace курсовагидро
 
     public partial class Form1 : MaterialForm
     {
-        Form2 frm2;
+        
 
         public Form1()
         {
             InitializeComponent();
             button2.Click += button2_Click;
             
-        }
-
-
-
-
-
-
-      
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -139,7 +128,7 @@ namespace курсовагидро
                     table.Rows.Add(sea.Name, sea.Countries, sea.Length, sea.Flow, sea.AnnualFlow);
                 }
             }
-            if (comboBox1.SelectedItem == null)
+           else if (string.IsNullOrEmpty(comboBox1.Text) || comboBox1.Text == "Випадаюче меню")
             {
                 PrintAllBodiesOfWater();
             }
@@ -152,6 +141,7 @@ namespace курсовагидро
             dataGridView1.DataSource = table;
             dataGridView1.Refresh();
         }
+
         public void textBox3_TextChanged(object sender, EventArgs e)
         {
             string searchText = textBox3.Text.ToLower();
@@ -191,7 +181,7 @@ namespace курсовагидро
                         }
                     }
                 }
-                else if (string.IsNullOrEmpty(comboBox1.Text))
+                else if (string.IsNullOrEmpty(comboBox1.Text) || comboBox1.Text == "Випадаюче меню")
                 {
                     // Пошук по всіх елементах списків
                     foreach (River river in Rivers.rivers)
@@ -224,7 +214,7 @@ namespace курсовагидро
             {
 
 
-                if (string.IsNullOrEmpty(comboBox1.Text))
+                if (string.IsNullOrEmpty(comboBox1.Text) || comboBox1.Text == "Випадаюче меню")
                 {
                     Print(Rivers.rivers, Lakes.lakes, Seas.seas);
                 }

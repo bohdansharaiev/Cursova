@@ -97,7 +97,7 @@ namespace курсовагидро
                     }
                 }
                 Rivers.rivers = rivers;  // Replace the existing list with the loaded rivers
-                MessageBox.Show($"Річки завантажено з файлу {filePath}");
+               
             }
             catch (Exception ex)
             {
@@ -127,7 +127,7 @@ namespace курсовагидро
                     }
                 }
                 Lakes.lakes = lakes;  // Replace the existing list with the loaded lakes
-                MessageBox.Show($"Озера завантажено з файлу {filePath}");
+               
             }
             catch (Exception ex)
             {
@@ -158,7 +158,7 @@ namespace курсовагидро
                     }
                 }
                 Seas.seas = seas;  // Replace the existing list with the loaded seas
-                MessageBox.Show($"Моря завантажено з файлу {filePath}");
+              
             }
             catch (Exception ex)
             {

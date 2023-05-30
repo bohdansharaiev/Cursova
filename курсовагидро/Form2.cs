@@ -45,8 +45,8 @@ namespace курсовагидро
                         Rivers.Add(newRiver);
 
                         // Оновлення таблиці з водними об'єктами
-                        
 
+                        MessageBox.Show("Річку додано");
                         // Очищення полів введення
                         textBox1.Text = "";
                         textBox2.Text = "";
@@ -76,6 +76,7 @@ namespace курсовагидро
                     try
                     {
                         Lakes.Add(new Lake(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToDouble(textBox3.Text), textBox4.Text));
+                        MessageBox.Show("Озеро додано");
                         textBox1.Text = "";
                         textBox2.Text = "";
                         textBox3.Text = "";
@@ -101,6 +102,7 @@ namespace курсовагидро
                     try
                     {
                         Seas.Add(new Sea(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToDouble(textBox3.Text), textBox4.Text));
+                        MessageBox.Show("Море додано");
                         textBox1.Text = "";
                         textBox2.Text = "";
                         textBox3.Text = "";

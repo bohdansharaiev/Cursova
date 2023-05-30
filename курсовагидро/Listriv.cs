@@ -36,13 +36,14 @@ namespace курсовагидро
             // Для обчислення річного стоку потрібно помножити потік на кількість секунд у році (60 секунд * 60 хвилин * 24 години * 365 днів).
             AnnualFlow = Flow * 60 * 60 * 24 * 365;
         }
+
     }
 
     public static class Rivers
     {
         public static bool fl = true;
-        public static List<River> rivers = new List<River>();
 
+        public static List<River> rivers = new List<River>();
         public static void Add(River river)
         {
             rivers.Add(river);
