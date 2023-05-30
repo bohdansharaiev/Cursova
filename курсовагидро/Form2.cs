@@ -32,104 +32,117 @@ namespace курсовагидро
         {
             if (comboBox1.SelectedItem != null)
             {
+                // Open the third form for confirmation
+                Form3 form3 = new Form3();
+                DialogResult result = form3.ShowDialog();
 
-                if (comboBox1.SelectedItem == "Річки")
+                // Check the result of the confirmation form
+                if (result == DialogResult.OK)
                 {
-                    try
+                    if (form3.AddRiver)
                     {
-                        int length = Convert.ToInt32(textBox2.Text);
-                        double flow = Convert.ToDouble(textBox3.Text);
-                        string countries = textBox4.Text;
+                        if (comboBox1.SelectedItem == "Річки")
+                        {
+                            try
+                            {
+                                int length = Convert.ToInt32(textBox2.Text);
+                                double flow = Convert.ToDouble(textBox3.Text);
+                                string countries = textBox4.Text;
 
-                        River newRiver = new River(textBox1.Text, length, flow, countries);
-                        Rivers.Add(newRiver);
+                                River newRiver = new River(textBox1.Text, length, flow, countries);
+                                Rivers.Add(newRiver);
 
-                        // Оновлення таблиці з водними об'єктами
+                                // Оновлення таблиці з водними об'єктами
 
-                        MessageBox.Show("Річку додано");
-                        // Очищення полів введення
-                        textBox1.Text = "";
-                        textBox2.Text = "";
-                        textBox3.Text = "";
-                        textBox4.Text = "";
+                                MessageBox.Show("Річку додано");
+                                // Очищення полів введення
+                                textBox1.Text = "";
+                                textBox2.Text = "";
+                                textBox3.Text = "";
+                                textBox4.Text = "";
+                            }
+                            catch (Exception ex)
+                            {
+                                if (ex.TargetSite.Name == "ToInt32")
+                                {
+                                    textBox2.BackColor = Color.Red; // Зміна кольору текстового поля textBox2 на червоний
+                                }
+                                else if (ex.TargetSite.Name == "ToDouble")
+                                {
+                                    textBox3.BackColor = Color.Red; // Зміна кольору текстового поля textBox3 на червоний
+                                }
+
+                                MessageBox.Show("Помилка неправильний тип даних: " + ex.Message);
+                            }
+                        }
+                        else if (comboBox1.SelectedItem == "Озера")
+                        {
+                            try
+                            {
+                                Lakes.Add(new Lake(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToDouble(textBox3.Text), textBox4.Text));
+                                MessageBox.Show("Озеро додано");
+                                textBox1.Text = "";
+                                textBox2.Text = "";
+                                textBox3.Text = "";
+                                textBox4.Text = "";
+                            }
+                            catch (Exception ex)
+                            {
+                                if (ex.TargetSite.Name == "ToInt32")
+                                {
+                                    textBox2.BackColor = Color.Red; // Зміна кольору текстового поля textBox2 на червоний
+                                }
+                                else if (ex.TargetSite.Name == "ToDouble")
+                                {
+                                    textBox3.BackColor = Color.Red; // Зміна кольору текстового поля textBox3 на червоний
+                                }
+
+                                MessageBox.Show("Помилка неправильний тип даних: " + ex.Message);
+                            }
+                        }
+                        else if (comboBox1.SelectedItem == "Моря")
+                        {
+                            try
+                            {
+                                Seas.Add(new Sea(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToDouble(textBox3.Text), textBox4.Text));
+                                MessageBox.Show("Море додано");
+                                textBox1.Text = "";
+                                textBox2.Text = "";
+                                textBox3.Text = "";
+                                textBox4.Text = "";
+                            }
+                            catch (Exception ex)
+                            {
+                                if (ex.TargetSite.Name == "ToInt32")
+                                {
+                                    textBox2.BackColor = Color.Red; // Зміна кольору текстового поля textBox2 на червоний
+                                }
+                                else if (ex.TargetSite.Name == "ToDouble")
+                                {
+                                    textBox3.BackColor = Color.Red; // Зміна кольору текстового поля textBox3 на червоний
+                                }
+
+                                MessageBox.Show("Помилка неправильний тип даних: " + ex.Message);
+                            }
+                        }
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        if (ex.TargetSite.Name == "ToInt32")
-                        {
-                            textBox2.BackColor = Color.Red; // Зміна кольору текстового поля textBox2 на червоний
-                        }
-                        else if (ex.TargetSite.Name == "ToDouble")
-                        {
-                            textBox3.BackColor = Color.Red; // Зміна кольору текстового поля textBox3 на червоний
-                        }
-
-                        MessageBox.Show("Помилка неправильний тип даних: " + ex.Message);
+                        // User chose not to add the water body
+                        MessageBox.Show("Відмінено");
                     }
                 }
-
-
-
-
-                if (comboBox1.SelectedItem == "Озера")
+                else
                 {
-                    try
-                    {
-                        Lakes.Add(new Lake(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToDouble(textBox3.Text), textBox4.Text));
-                        MessageBox.Show("Озеро додано");
-                        textBox1.Text = "";
-                        textBox2.Text = "";
-                        textBox3.Text = "";
-                        textBox4.Text = "";
-                    }
-                    catch (Exception ex)
-                    {
-                        if (ex.TargetSite.Name == "ToInt32")
-                        {
-                            textBox2.BackColor = Color.Red; // Зміна кольору текстового поля textBox2 на червоний
-                        }
-                        else if (ex.TargetSite.Name == "ToDouble")
-                        {
-                            textBox3.BackColor = Color.Red; // Зміна кольору текстового поля textBox3 на червоний
-                        }
-
-
-                        MessageBox.Show("Помилка неправильний тип даних: " + ex.Message);
-                    }
-                }
-                if (comboBox1.SelectedItem == "Моря")
-                {
-                    try
-                    {
-                        Seas.Add(new Sea(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToDouble(textBox3.Text), textBox4.Text));
-                        MessageBox.Show("Море додано");
-                        textBox1.Text = "";
-                        textBox2.Text = "";
-                        textBox3.Text = "";
-                        textBox4.Text = "";
-                    }
-                    catch (Exception ex)
-                    {
-                        if (ex.TargetSite.Name == "ToInt32")
-                        {
-                            textBox2.BackColor = Color.Red; // Зміна кольору текстового поля textBox2 на червоний
-                        }
-                        else if (ex.TargetSite.Name == "ToDouble")
-                        {
-                            textBox3.BackColor = Color.Red; // Зміна кольору текстового поля textBox3 на червоний
-                        }
-
-
-
-                        MessageBox.Show("Помилка неправильний тип даних: " + ex.Message);
-                    }
+                    // Confirmation form was closed without a decision
+                    MessageBox.Show("Відмінено");
                 }
             }
             else
             {
                 MessageBox.Show("Виберіть водне тіло");
             }
-            }
+        }
 
         private void button2_Click(object sender, EventArgs e)
         {
