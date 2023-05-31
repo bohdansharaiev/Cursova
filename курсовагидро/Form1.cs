@@ -41,7 +41,7 @@ namespace курсовагидро
 
             Dataclass.LoadSeasFromFile(filePath);
 
-
+            panel1.Visible = false;
 
             table.Columns.Add("Назва", typeof(string));
                 table.Columns.Add("Страна", typeof(string));
@@ -312,45 +312,15 @@ namespace курсовагидро
 
         private void button3_Click(object sender, EventArgs e)
         {
-            string name = textBox2.Text;
-            string selectedType = comboBox1.SelectedItem.ToString();
-            bool deleted = false;
+            if (!panel1.Visible)
+            {
 
-            if (selectedType == "Річки")
-            {
-                River riverToDelete = Rivers.rivers.Find(r => r.Name == name);
-                if (riverToDelete != null)
-                {
-                    Rivers.rivers.Remove(riverToDelete);
-                    deleted = true;
-                }
-            }
-            else if (selectedType == "Озера")
-            {
-                Lake lakeToDelete = Lakes.lakes.Find(l => l.Name == name);
-                if (lakeToDelete != null)
-                {
-                    Lakes.lakes.Remove(lakeToDelete);
-                    deleted = true;
-                }
-            }
-            else if (selectedType == "Моря")
-            {
-                Sea seaToDelete = Seas.seas.Find(s => s.Name == name);
-                if (seaToDelete != null)
-                {
-                    Seas.seas.Remove(seaToDelete);
-                    deleted = true;
-                }
-            }
 
-            if (deleted)
-            {
-                Print(Rivers.rivers, Lakes.lakes, Seas.seas);
+                panel1.Visible = true;
             }
             else
             {
-                MessageBox.Show("Невірна назва або водне тіло не знайдено.");
+                panel1.Visible = false;
             }
         }
 

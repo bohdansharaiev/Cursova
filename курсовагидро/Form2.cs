@@ -9,6 +9,7 @@ using System.Text;
 
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static курсовагидро.Form1;
 
@@ -45,22 +46,44 @@ namespace курсовагидро
                         {
                             try
                             {
+
                                 int length = Convert.ToInt32(textBox2.Text);
                                 double flow = Convert.ToDouble(textBox3.Text);
                                 string countries = textBox4.Text;
+                                bool yes = false;
+                                foreach (River river in Rivers.rivers)
+                                {
+                                    if (river.Name == textBox1.Text)
+                                    {
+                                        yes = true;
+                                        MessageBox.Show("Дана річка вже існує");
+                                        textBox1.Text = "";
+                                        textBox2.Text = "";
+                                        textBox3.Text = "";
+                                        textBox4.Text = "";
+                                        break;
+                                    }
 
-                                River newRiver = new River(textBox1.Text, length, flow, countries);
-                                Rivers.Add(newRiver);
+                                }
 
-                                // Оновлення таблиці з водними об'єктами
+                                if (yes != true)
+                                {
 
-                                MessageBox.Show("Річку додано");
-                                // Очищення полів введення
-                                textBox1.Text = "";
-                                textBox2.Text = "";
-                                textBox3.Text = "";
-                                textBox4.Text = "";
-                            }
+                                    yes = false;
+                                    River newRiver = new River(textBox1.Text, length, flow, countries);
+                                    Rivers.Add(newRiver);
+
+                                    // Оновлення таблиці з водними об'єктами
+
+                                    MessageBox.Show("Річку додано");
+                                    // Очищення полів введення
+                                    textBox1.Text = "";
+                                    textBox2.Text = "";
+                                    textBox3.Text = "";
+                                    textBox4.Text = "";
+                                }
+                                }
+                            
                             catch (Exception ex)
                             {
                                 if (ex.TargetSite.Name == "ToInt32")
@@ -79,12 +102,33 @@ namespace курсовагидро
                         {
                             try
                             {
-                                Lakes.Add(new Lake(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToDouble(textBox3.Text), textBox4.Text));
-                                MessageBox.Show("Озеро додано");
-                                textBox1.Text = "";
-                                textBox2.Text = "";
-                                textBox3.Text = "";
-                                textBox4.Text = "";
+                                bool yes = false;
+                                foreach (Lake lake in Lakes.lakes)
+                                {
+                                    if (lake.Name == textBox1.Text)
+                                    {
+                                        yes = true;
+                                        MessageBox.Show("Дане озеро вже існує");
+                                        textBox1.Text = "";
+                                        textBox2.Text = "";
+                                        textBox3.Text = "";
+                                        textBox4.Text = "";
+                                        break;
+                                    }
+
+                                }
+
+                                if (yes != true)
+                                {
+
+                                    yes = false;
+                                    Lakes.Add(new Lake(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToDouble(textBox3.Text), textBox4.Text));
+                                    MessageBox.Show("Озеро додано");
+                                    textBox1.Text = "";
+                                    textBox2.Text = "";
+                                    textBox3.Text = "";
+                                    textBox4.Text = "";
+                                }
                             }
                             catch (Exception ex)
                             {
@@ -104,12 +148,33 @@ namespace курсовагидро
                         {
                             try
                             {
-                                Seas.Add(new Sea(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToDouble(textBox3.Text), textBox4.Text));
-                                MessageBox.Show("Море додано");
-                                textBox1.Text = "";
-                                textBox2.Text = "";
-                                textBox3.Text = "";
-                                textBox4.Text = "";
+                                bool yes = false;
+                                foreach (Sea sea in Seas.seas)
+                                {
+                                    if (sea.Name == textBox1.Text)
+                                    {
+                                        yes = true;
+                                        MessageBox.Show("Дана річка вже існує");
+                                        textBox1.Text = "";
+                                        textBox2.Text = "";
+                                        textBox3.Text = "";
+                                        textBox4.Text = "";
+                                        break;
+                                    }
+
+                                }
+
+                                if (yes != true)
+                                {
+
+                                    yes = false;
+                                    Seas.Add(new Sea(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToDouble(textBox3.Text), textBox4.Text));
+                                    MessageBox.Show("Море додано");
+                                    textBox1.Text = "";
+                                    textBox2.Text = "";
+                                    textBox3.Text = "";
+                                    textBox4.Text = "";
+                                }
                             }
                             catch (Exception ex)
                             {
