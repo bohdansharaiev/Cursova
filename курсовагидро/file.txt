@@ -53,6 +53,9 @@ River,Thames,346,346,United Kingdom,50,North Sea
 River,Yangtze,6,300,China,50,East China Sea
 River,Niger,4,184,Nigeria,50,Gulf of Guinea
 River,Colorado,2,334,United States,50,Gulf of California
+River,Andrei Negr,2134,23,K,1,1;1;1;1
+River,23,2,2,2,2,
+River,2,2,2,2,2,2
 Lake,Tanganyika,6650,2830,Egypt,50
 Lake,Poyang,6300,3080,China,50
 Lake,Mississippi,6275,16500,United States,50
@@ -68,7 +71,6 @@ Lake,Great Slave Lake,4241,10700,Canada,50
 Lake,Chad,4184,1600,Nigeria,50
 Lake,Poyang,3914,20000,India,50
 Lake,Victoria,3750,9570,Australia,50
-Lake,Tucuruí,3248,5600,Brazil,40
 Lake,Volga,3530,8000,Russia,40
 Lake,Kariba,3180,2250,Pakistan,40
 Lake,Balaton,2850,2010,Germany,40
@@ -108,7 +110,7 @@ Lake,Great Bear Lake,31,80, 1,40
 Lake,Malawi,29,600, 706,40
 Lake,Winnipeg,23,553, 435,40
 Lake,Erie,25,667, 388,40
-Lake,Laker,233,233,Ert,23
+Lake,Lal,1,1,1,1
 Sea,Red Sea,6650,2830,Egypt,120
 Sea,Yellow Sea,6300,3080,China,120
 Sea,Gulf of Mexico,6275,16500,United States,120
@@ -164,3 +166,4 @@ Sea,North Sea,570,0, 575,120
 Sea,Red Sea,438,0, 442,120
 Sea,Baltic Sea,412,0, 464,120
 Sea,Persian Gulf,251,0, 17,120
+Sea,Lal,2,2,2,2

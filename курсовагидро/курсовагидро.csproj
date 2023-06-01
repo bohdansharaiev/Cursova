@@ -99,6 +99,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -116,6 +117,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="file.txt" />
+    <None Include="Resources\mountains-nature-sky-river-beautiful-scenery-wallpaper-preview.jpg" />
+    <None Include="Resources\Без названия %281%29.jpg" />
+    <None Include="Resources\lovepik-smoke-color-mobile-wallpaper-background-image_400951853.jpg" />
+    <None Include="Resources\1625006541_28-phonoteka_org-p-oboi-gradient-vertikalnie-krasivo-28.png" />
+    <None Include="Resources\radial-gradient-top-left.png" />
+    <None Include="Resources\images %281%29.jpg" />
+    <None Include="Resources\images.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 using static курсовагидро.Form1;
 
 namespace курсовагидро
@@ -24,12 +24,36 @@ namespace курсовагидро
         public Form1()
         {
             InitializeComponent();
-            button2.Click += button2_Click;
+           
             dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
+            System.Windows.Forms.Button button = new System.Windows.Forms.Button();
+            int border = 10;
+            SetRoundedButtonStyle(button1, border);
+           
+            SetRoundedButtonStyle(button3, border);
+            SetRoundedButtonStyle(button4, border);
+            
+            panel1.Visible = false;
+              
 
+    }
+        private void SetRoundedButtonStyle(Button button, int borderRadius)
+        {
+            button.FlatStyle = FlatStyle.Flat;
+            button.FlatAppearance.BorderSize = 0;
+            button.BackColor = SystemColors.GradientActiveCaption;
+            button.FlatAppearance.MouseDownBackColor = SystemColors.GradientActiveCaption;
+            button.FlatAppearance.MouseOverBackColor = Color.LightGray;
 
+            System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
+            path.AddArc(0, 0, borderRadius, borderRadius, 180, 90); // Ліва верхня дуга
+            path.AddArc(button.Width - borderRadius, 0, borderRadius, borderRadius, 270, 90); // Права верхня дуга
+            path.AddArc(button.Width - borderRadius, button.Height - borderRadius, borderRadius, borderRadius, 0, 90); // Права нижня дуга
+            path.AddArc(0, button.Height - borderRadius, borderRadius, borderRadius, 90, 90); // Ліва нижня дуга
+            path.CloseAllFigures();
+
+            button.Region = new Region(path);
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             // Створити список річок
@@ -41,10 +65,9 @@ namespace курсовагидро
             Dataclass.LoadLakesFromFile(file);
 
             Dataclass.LoadSeasFromFile(file);
-
-            panel1.Visible = false;
-
-            table.Columns.Add("Назва", typeof(string));
+            // Зміна коліру кнопки
+         
+        table.Columns.Add("Назва", typeof(string));
                 table.Columns.Add("Страна", typeof(string));
                 table.Columns.Add("Довжина", typeof(int));
                 table.Columns.Add("Flow", typeof(double));
@@ -74,7 +97,7 @@ namespace курсовагидро
             table.Columns.Add("Страна", typeof(string));
             table.Columns.Add("Довжина", typeof(int));
             table.Columns.Add("Flow", typeof(double));
-            table.Columns.Add("Річний стік", typeof(double)); // Додати стовпець для річного стоку
+            table.Columns.Add("Річний стік", typeof(double)); 
             table.Columns.Add("Площа басейну", typeof(double));
             table.Columns.Add("Впадіння річки", typeof(string));
             foreach (River river in Rivers.rivers)
@@ -249,6 +272,10 @@ namespace курсовагидро
                     MessageBox.Show("Відміна");
                 }
             }
+            else
+            {
+                MessageBox.Show("Ви вибрали невірний рядок");
+            }
         }
         public void textBox3_TextChanged(object sender, EventArgs e)
         {
@@ -403,20 +430,8 @@ namespace курсовагидро
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            string filePath = "C:\\Users\\Богдан\\Desktop\\data.txt";
-            Dataclass.ClearFile(filePath);
-            Dataclass.ExportData(filePath);
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            string filePath = "C:\\Users\\Богдан\\Desktop\\data.txt";
-            Dataclass.LoadRiversFromFile(filePath);
-        }
-
-       
+     
+        
     }
 }
 
