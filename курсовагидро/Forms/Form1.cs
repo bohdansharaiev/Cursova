@@ -31,11 +31,11 @@ namespace курсовагидро
             System.Windows.Forms.Button button = new System.Windows.Forms.Button();
             int border = 10;
             SetRoundedButtonStyle(button1, border);
-            dataGridView1.CellClick += dataGridView1_CellClick;
+          
             SetRoundedButtonStyle(button3, border);
             SetRoundedButtonStyle(button4, border);
             
-            panel1.Visible = false;
+   
 
 
             // Встановити мінімальне та максимальне значення для тракбару
@@ -75,7 +75,6 @@ namespace курсовагидро
             Dataclass.LoadRiversFromFile(file);
             // Додати річки до списку
             Dataclass.LoadLakesFromFile(file);
-
             Dataclass.LoadSeasFromFile(file);
             // Зміна коліру кнопки
          
@@ -98,32 +97,7 @@ namespace курсовагидро
 
         }
         DataTable table = new DataTable();
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0 && e.RowIndex < dataGridView1.Rows.Count)
-            {
-                DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
-                string name = selectedRow.Cells["Назва"].Value.ToString();
-                int length = Convert.ToInt32(selectedRow.Cells["Довжина"].Value);
-                string country = selectedRow.Cells["Страна"].Value.ToString();
-                double flow = Convert.ToDouble(selectedRow.Cells["Flow"].Value);
-                double annualFlow = Convert.ToDouble(selectedRow.Cells["Річний стік"].Value);
-                double basinArea = Convert.ToDouble(selectedRow.Cells["Площа басейну"].Value);
-                string tributaries = "";
-
-                foreach (DataGridViewCell cell in selectedRow.Cells)
-                {
-                    if (cell.OwningColumn.Name == "Впадіння річки")
-                    {
-                        tributaries = cell.Value.ToString();
-                        break;
-                    }
-                }
-               
-               Form4 form4 = new Form4(name, length, country, flow, annualFlow, basinArea, tributaries);
-                form4.ShowDialog();
-            }
-        }
+     
 
         // Оновлений метод друку всіх водних об'єктів
         private void PrintAllBodiesOfWater()
@@ -162,6 +136,7 @@ namespace курсовагидро
             dataGridView1.DataSource = table;
             dataGridView1.Refresh();
         }
+        // заповення таблиці
         public void Print(List<River> riversList, List<Lake> lakesList, List<Sea> seasList)
         {
             dataGridView1.DataSource = null;
@@ -229,6 +204,7 @@ namespace курсовагидро
             dataGridView1.DataSource = table;
             dataGridView1.Refresh();
         }
+        // видалення
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0) // Проверяем, что ячейка не заголовок
@@ -409,53 +385,33 @@ namespace курсовагидро
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (!panel1.Visible)
+            if (dataGridView1.SelectedCells.Count > 0)
             {
+                int rowIndex = dataGridView1.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = dataGridView1.Rows[rowIndex];
 
+                string name = selectedRow.Cells["Назва"].Value.ToString();
+                int length = Convert.ToInt32(selectedRow.Cells["Довжина"].Value);
+                string country = selectedRow.Cells["Страна"].Value.ToString();
+                double flow = Convert.ToDouble(selectedRow.Cells["Flow"].Value);
+                double annualFlow = Convert.ToDouble(selectedRow.Cells["Річний стік"].Value);
+                double basinArea = Convert.ToDouble(selectedRow.Cells["Площа басейну"].Value);
+                string tributaries = "";
+                Rivers.ActualRiver = Rivers.SearchName(name);
+                foreach (DataGridViewCell cell in selectedRow.Cells)
+                {
+                    if (cell.OwningColumn.Name == "Впадіння річки")
+                    {
+                        tributaries = cell.Value.ToString();
+                        break;
+                    }
+                }
 
-                panel1.Visible = true;
-            }
-            else
-            {
-                panel1.Visible = false;
-            }
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // Clear the data grid view
-            dataGridView1.DataSource = null;
-            dataGridView1.Rows.Clear();
-            dataGridView1.Columns.Clear();
-
-            // Clear the table
-            table.Rows.Clear();
-            table.Columns.Clear();
-
-            // Add columns to the table based on the selected item in the combo box
-            if (comboBox1.SelectedItem == "Річки")
-            {
-                table.Columns.Add("Назва(річки)", typeof(string));
-                table.Columns.Add("Страна", typeof(string));
-                table.Columns.Add("Довжина", typeof(int));
-                table.Columns.Add("Flow", typeof(double));
-            }
-            else if (comboBox1.SelectedItem == "Озера")
-            {
-                table.Columns.Add("Назва(озера)", typeof(string));
-                table.Columns.Add("Страна", typeof(string));
-                table.Columns.Add("Довжина", typeof(int));
-                table.Columns.Add("Flow", typeof(double));
-            }
-
-            else if (comboBox1.SelectedItem == "Моря")
-            {
-                table.Columns.Add("Назва(моря)", typeof(string));
-                table.Columns.Add("Страна", typeof(string));
-                table.Columns.Add("Довжина", typeof(int));
-                table.Columns.Add("Площа", typeof(double));
+                Form4 form4 = new Form4(name);
+                form4.ShowDialog();
             }
         }
+
 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -504,28 +460,65 @@ namespace курсовагидро
                 table.Columns.Add("Площа басейну", typeof(double));
 
                 label4.Text = Convert.ToString(trackBar1.Value);
-
-                foreach (River river in Rivers.rivers)
+                if (comboBox1.SelectedItem != null)
                 {
-                    if (river.Length <= trackBar1.Value)
+                    if (comboBox1.SelectedItem == "Річки")
                     {
-                        table.Rows.Add(river.Name, river.Countries, river.Length, river.Flow, river.AnnualFlow, river.BasinArea);
+                        foreach (River river in Rivers.rivers)
+                        {
+                            if (river.Length <= trackBar1.Value)
+                            {
+                                table.Rows.Add(river.Name, river.Countries, river.Length, river.Flow, river.AnnualFlow, river.BasinArea);
+                            }
+                        }
+                    }
+                    if (comboBox1.SelectedItem == "Озера")
+                    {
+                        foreach (Lake lake in Lakes.lakes)
+                        {
+                            if (lake.Length <= trackBar1.Value)
+                            {
+                                table.Rows.Add(lake.Name, lake.Countries, lake.Length, lake.Flow, lake.AnnualFlow, lake.BasinArea);
+                            }
+                        }
+                    }
+                    if (comboBox1.SelectedItem == "Моря")
+                    {
+                        foreach (Sea sea in Seas.seas)
+                        {
+                            if (sea.Length <= trackBar1.Value)
+                            {
+                                table.Rows.Add(sea.Name, sea.Countries, sea.Length, sea.Flow, sea.AnnualFlow, sea.BasinArea);
+                            }
+                        }
                     }
                 }
-
-                foreach (Lake lake in Lakes.lakes)
+                else
                 {
-                    if (lake.Length <= trackBar1.Value)
+
+
+                    foreach (River river in Rivers.rivers)
                     {
-                        table.Rows.Add(lake.Name, lake.Countries, lake.Length, lake.Flow, lake.AnnualFlow, lake.BasinArea);
+                        if (river.Length <= trackBar1.Value)
+                        {
+                            table.Rows.Add(river.Name, river.Countries, river.Length, river.Flow, river.AnnualFlow, river.BasinArea);
+                        }
                     }
-                }
 
-                foreach (Sea sea in Seas.seas)
-                {
-                    if (sea.Length <= trackBar1.Value)
+                    foreach (Lake lake in Lakes.lakes)
                     {
-                        table.Rows.Add(sea.Name, sea.Countries, sea.Length, sea.Flow, sea.AnnualFlow, sea.BasinArea);
+                        if (lake.Length <= trackBar1.Value)
+                        {
+                            table.Rows.Add(lake.Name, lake.Countries, lake.Length, lake.Flow, lake.AnnualFlow, lake.BasinArea);
+                        }
+                    }
+
+                    foreach (Sea sea in Seas.seas)
+                    {
+                        if (sea.Length <= trackBar1.Value)
+                        {
+                            table.Rows.Add(sea.Name, sea.Countries, sea.Length, sea.Flow, sea.AnnualFlow, sea.BasinArea);
+                        }
                     }
                 }
 

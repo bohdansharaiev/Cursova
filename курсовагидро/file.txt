@@ -53,7 +53,6 @@ River,Yangtze,6,300,China,50,East China Sea
 River,Niger,4,184,Nigeria,50,Gulf of Guinea
 River,Colorado,2,334,United States,50,Gulf of California
 River,Andrei Negr,2134,23,K,1,1;1;1;1
-River,23,2,2,2,2,
 River,укцпар,2,2,ув,2,23
 River,Ertyuuuiiii,7000,23,Ukr,2,34
 Lake,Tanganyika,6650,2830,Egypt,50

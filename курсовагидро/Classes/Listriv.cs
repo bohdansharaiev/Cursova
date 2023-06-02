@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace курсовагидро
 {
@@ -54,7 +55,20 @@ namespace курсовагидро
     {
         public static bool fl = true;
 
+        public static River ActualRiver;
         public static List<River> rivers = new List<River>();
+        public static River SearchName(string name)
+        {
+            foreach(River river in rivers)
+            {
+                if(river.Name == name)
+                {
+                    return river;
+                }
+                
+            }
+            return null;
+        }
         public static void Add(River river)
         {
             rivers.Add(river);

@@ -10,40 +10,47 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using курсовагидро.Forms;
 namespace курсовагидро.Forms
 {
     public partial class Form4 : Form
     {
-        public Form4(string name, int length, string country, double flow, double annualFlow, double basinArea, string tributaries)
+       
+        
+          
+        public Form4(string name)
         {
             InitializeComponent();
             textBox1.Text = name;
-            textBox2.Text = length.ToString();
-            textBox3.Text = country;
-            textBox4.Text = flow.ToString();
-            textBox5.Text = annualFlow.ToString();
-            textBox6.Text = basinArea.ToString();
-            textBox7.Text = tributaries;
+
+            textBox2.Text = Convert.ToString(Rivers.ActualRiver.Length);
+            textBox3.Text = Rivers.ActualRiver.Countries;
+            textBox4.Text = Convert.ToString(Rivers.ActualRiver.Flow);
+            textBox5.Text = Convert.ToString(Rivers.ActualRiver.AnnualFlow);
+            textBox6.Text = Convert.ToString(Rivers.ActualRiver.BasinArea);
+     
+           
+
         }
 
-        private void button1_Click(object sender, EventArgs e)
+       
+  
+
+        private void button1_Click_1(object sender, EventArgs e)
         {
-            // Retrieve the modified values from the TextBox controls
-            string newName = textBox1.Text;
-            int newLength = Convert.ToInt32(textBox2.Text);
-            string newCountry = textBox3.Text;
-            double newFlow = Convert.ToDouble(textBox4.Text);
-            double newAnnualFlow = Convert.ToDouble(textBox5.Text);
-            double newBasinArea = Convert.ToDouble(textBox6.Text);
-            string newTributaries = textBox7.Text;
-
-            // Perform the necessary modifications to the water body (e.g., update the values in the data source)
-
-            // Save the modified water body to the file or database
-
-            // Close the Form4
             this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Rivers.ActualRiver.Name = textBox1.Text;
+            Rivers.ActualRiver.Length = Convert.ToInt32(textBox2.Text);
+            Rivers.ActualRiver.Countries = textBox3.Text;
+            Rivers.ActualRiver.Flow = Convert.ToInt32(textBox4.Text);
+            Rivers.ActualRiver.AnnualFlow = Convert.ToDouble(textBox5.Text);
+            Rivers.ActualRiver.BasinArea = Convert.ToInt32(textBox6.Text);
+
         }
     }
 }
