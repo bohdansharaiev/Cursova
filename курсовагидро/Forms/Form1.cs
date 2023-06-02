@@ -6,13 +6,15 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
-
+using курсовагидро.Forms;
 using static курсовагидро.Form1;
+
 
 namespace курсовагидро
 {
@@ -29,14 +31,24 @@ namespace курсовагидро
             System.Windows.Forms.Button button = new System.Windows.Forms.Button();
             int border = 10;
             SetRoundedButtonStyle(button1, border);
-           
+            dataGridView1.CellClick += dataGridView1_CellClick;
             SetRoundedButtonStyle(button3, border);
             SetRoundedButtonStyle(button4, border);
             
             panel1.Visible = false;
-              
 
-    }
+
+            // Встановити мінімальне та максимальне значення для тракбару
+            trackBar1.Minimum = 0;
+            trackBar1.Maximum = 7000;
+
+            // Додати обробник події при зміні значення тракбару
+            trackBar1.ValueChanged += TrackBar1_ValueChanged;
+
+            // Оновити значення тракбару за замовчуванням
+            trackBar1.Value = 0;
+        }
+       
         private void SetRoundedButtonStyle(Button button, int borderRadius)
         {
             button.FlatStyle = FlatStyle.Flat;
@@ -86,6 +98,33 @@ namespace курсовагидро
 
         }
         DataTable table = new DataTable();
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < dataGridView1.Rows.Count)
+            {
+                DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
+                string name = selectedRow.Cells["Назва"].Value.ToString();
+                int length = Convert.ToInt32(selectedRow.Cells["Довжина"].Value);
+                string country = selectedRow.Cells["Страна"].Value.ToString();
+                double flow = Convert.ToDouble(selectedRow.Cells["Flow"].Value);
+                double annualFlow = Convert.ToDouble(selectedRow.Cells["Річний стік"].Value);
+                double basinArea = Convert.ToDouble(selectedRow.Cells["Площа басейну"].Value);
+                string tributaries = "";
+
+                foreach (DataGridViewCell cell in selectedRow.Cells)
+                {
+                    if (cell.OwningColumn.Name == "Впадіння річки")
+                    {
+                        tributaries = cell.Value.ToString();
+                        break;
+                    }
+                }
+               
+               Form4 form4 = new Form4(name, length, country, flow, annualFlow, basinArea, tributaries);
+                form4.ShowDialog();
+            }
+        }
+
         // Оновлений метод друку всіх водних об'єктів
         private void PrintAllBodiesOfWater()
         {
@@ -430,8 +469,80 @@ namespace курсовагидро
 
         }
 
-     
-        
+        private void TrackBar1_ValueChanged(object sender, EventArgs e)
+        {
+            // Очистити таблицю перед додаванням даних
+            dataGridView1.DataSource = null;
+            table.Rows.Clear();
+            table.Columns.Clear();
+
+            // Додати стовпці до таблиці
+            table.Columns.Add("Назва", typeof(string));
+            table.Columns.Add("Страна", typeof(string));
+            table.Columns.Add("Довжина", typeof(int));
+            table.Columns.Add("Flow", typeof(double));
+            table.Columns.Add("Річний стік", typeof(double));
+            table.Columns.Add("Площа басейну", typeof(double));
+            label4.Text = Convert.ToString(trackBar1.Value);
+            if (trackBar1.Value != 0)
+            {
+
+
+
+
+                // Очистити таблицю перед додаванням даних
+                dataGridView1.DataSource = null;
+                table.Rows.Clear();
+                table.Columns.Clear();
+
+                // Додати стовпці до таблиці
+                table.Columns.Add("Назва", typeof(string));
+                table.Columns.Add("Страна", typeof(string));
+                table.Columns.Add("Довжина", typeof(int));
+                table.Columns.Add("Flow", typeof(double));
+                table.Columns.Add("Річний стік", typeof(double));
+                table.Columns.Add("Площа басейну", typeof(double));
+
+                label4.Text = Convert.ToString(trackBar1.Value);
+
+                foreach (River river in Rivers.rivers)
+                {
+                    if (river.Length <= trackBar1.Value)
+                    {
+                        table.Rows.Add(river.Name, river.Countries, river.Length, river.Flow, river.AnnualFlow, river.BasinArea);
+                    }
+                }
+
+                foreach (Lake lake in Lakes.lakes)
+                {
+                    if (lake.Length <= trackBar1.Value)
+                    {
+                        table.Rows.Add(lake.Name, lake.Countries, lake.Length, lake.Flow, lake.AnnualFlow, lake.BasinArea);
+                    }
+                }
+
+                foreach (Sea sea in Seas.seas)
+                {
+                    if (sea.Length <= trackBar1.Value)
+                    {
+                        table.Rows.Add(sea.Name, sea.Countries, sea.Length, sea.Flow, sea.AnnualFlow, sea.BasinArea);
+                    }
+                }
+
+                // Встановити джерело даних таблиці і оновити DataGridView
+                dataGridView1.DataSource = table;
+                dataGridView1.Refresh();
+
+            }
+            else
+            {
+                Print(Rivers.rivers, Lakes.lakes, Seas.seas);
+
+            }
+            // Встановити джерело даних таблиці і оновити DataGridView
+            dataGridView1.DataSource = table;
+            dataGridView1.Refresh();
+        }
     }
 }
 

@@ -3,7 +3,6 @@ River,Yangtze,6300,3080,China,120,East China Sea
 River,Mississippi,6275,16500,United States,120,Gulf of Mexico
 River,Yenisei,5545,19320,Russia,120,Kara Sea
 River,Huang He,5464,2570,China,120,Yellow Sea
-River,Ob,5410,12600,Russia,120,Kara Sea
 River,Parana,4880,17400,Brazil,120,Rio de la Plata
 River,Congo,4700,4130,DR Congo,120,Atlantic Ocean
 River,Amur,4444,11620,Russia,120,Sea of Okhotsk
@@ -55,7 +54,8 @@ River,Niger,4,184,Nigeria,50,Gulf of Guinea
 River,Colorado,2,334,United States,50,Gulf of California
 River,Andrei Negr,2134,23,K,1,1;1;1;1
 River,23,2,2,2,2,
-River,2,2,2,2,2,2
+River,укцпар,2,2,ув,2,23
+River,Ertyuuuiiii,7000,23,Ukr,2,34
 Lake,Tanganyika,6650,2830,Egypt,50
 Lake,Poyang,6300,3080,China,50
 Lake,Mississippi,6275,16500,United States,50
@@ -166,4 +166,3 @@ Sea,North Sea,570,0, 575,120
 Sea,Red Sea,438,0, 442,120
 Sea,Baltic Sea,412,0, 464,120
 Sea,Persian Gulf,251,0, 17,120
-Sea,Lal,2,2,2,2

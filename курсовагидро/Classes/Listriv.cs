@@ -22,7 +22,7 @@ namespace курсовагидро
         public int BasinArea;
         public string[] Tributaries; // Масив для зберігання прилеглих річок
 
-        public River(string name, int length, double flow, string countries, int width, string[] tributaries)
+        public River(string name, int length, double flow, string countries, int width,string[] tributaries)
         {
             Name = name;
             Length = length;
@@ -31,7 +31,9 @@ namespace курсовагидро
             this.width = width;
             Tributaries = tributaries;
             CalculateAnnualFlow();
+            this.AnnualFlow = AnnualFlow ;
             CalculateArea();
+            this.BasinArea = BasinArea;
         }
 
         private void CalculateAnnualFlow()
@@ -57,7 +59,7 @@ namespace курсовагидро
         {
             rivers.Add(river);
         }
-     
+
     }
     
 

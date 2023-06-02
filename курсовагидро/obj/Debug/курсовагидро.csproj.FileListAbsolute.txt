@@ -70,3 +70,4 @@ C:\Users\Богдан\source\repos\курсоваgидро3\курсовагид
 C:\Users\Богдан\source\repos\курсоваgидро3\курсовагидро\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Богдан\source\repos\курсоваgидро3\курсовагидро\bin\Debug\System.Drawing.Common.xml
 C:\Users\Богдан\source\repos\курсоваgидро3\курсовагидро\obj\Debug\курсовагидро.csproj.CopyComplete
+C:\Users\Богдан\source\repos\курсоваgидро3\курсовагидро\obj\Debug\курсовагидро.Forms.Form4.resources
