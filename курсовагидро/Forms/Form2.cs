@@ -130,15 +130,7 @@ namespace курсовагидро
                             }
                             catch (Exception ex)
                             {
-                                if (ex.TargetSite.Name == "ToInt32")
-                                {
-                                    textBox2.BackColor = Color.Red; // Зміна кольору текстового поля textBox2 на червоний
-                                }
-                                else if (ex.TargetSite.Name == "ToDouble")
-                                {
-                                    textBox3.BackColor = Color.Red; // Зміна кольору текстового поля textBox3 на червоний
-                                }
-
+                              
                                 MessageBox.Show("Помилка неправильний тип даних: " + ex.Message);
                             }
                         }
@@ -157,12 +149,12 @@ namespace курсовагидро
                                 }
                                 else
                                 {
-                                    bool yes = false;
+                                   
                                     foreach (Lake lake in Lakes.lakes)
                                     {
                                         if (lake.Name == textBox1.Text)
                                         {
-                                            yes = true;
+                                         
                                             MessageBox.Show("Дане озеро вже існує");
                                             textBox1.Text = "";
                                             textBox2.Text = "";
@@ -173,8 +165,7 @@ namespace курсовагидро
                                         }
                                     }
 
-                                    if (!yes)
-                                    {
+                                  
                                         Lakes.Add(new Lake(textBox1.Text, Convert.ToInt32(textBox2.Text),
                                             Convert.ToDouble(textBox3.Text), textBox4.Text, Convert.ToInt32(textBox5.Text)));
 
@@ -187,7 +178,7 @@ namespace курсовагидро
                                         textBox3.Text = "";
                                         textBox4.Text = "";
                                         textBox5.Text = "";
-                                    }
+                                    
                                 }
                             }
                             catch (Exception ex)
@@ -219,12 +210,12 @@ namespace курсовагидро
                                 }
                                 else
                                 {
-                                    bool yes = false;
+                                  
                                     foreach (Sea sea in Seas.seas)
                                     {
                                         if (sea.Name == textBox1.Text)
                                         {
-                                            yes = true;
+                                           
                                             MessageBox.Show("Дане море вже існує");
                                             textBox1.Text = "";
                                             textBox2.Text = "";
@@ -235,8 +226,7 @@ namespace курсовагидро
                                         }
                                     }
 
-                                    if (!yes)
-                                    {
+                                   
                                         Seas.Add(new Sea(textBox1.Text, Convert.ToInt32(textBox2.Text),
                                             Convert.ToDouble(textBox3.Text), textBox4.Text, Convert.ToInt32(textBox5.Text)));
 
@@ -249,7 +239,7 @@ namespace курсовагидро
                                         textBox3.Text = "";
                                         textBox4.Text = "";
                                         textBox5.Text = "";
-                                    }
+                                    
                                 }
                             }
                             catch (Exception ex)

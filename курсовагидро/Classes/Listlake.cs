@@ -47,10 +47,23 @@ namespace курсовагидро
 
         public static bool fl = true;
         public static List<Lake> lakes = new List<Lake>();
+        public static Lake ActualLake;
 
-        public static void Add(Lake Lake)
+        public static Lake SearchName(string name)
         {
-            lakes.Add(Lake);
+            foreach (Lake lake in lakes)
+            {
+                if (lake.Name == name)
+                {
+                    return lake;
+                }
+
+            }
+            return null;
+        }
+        public static void Add(Lake lake)
+        {
+            lakes.Add(lake);
         }
 
     }

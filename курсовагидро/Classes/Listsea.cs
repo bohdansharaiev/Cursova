@@ -46,7 +46,20 @@ namespace курсовагидро
     {
         public static bool fl = true;
         public static List<Sea> seas = new List<Sea>();
+        public static Sea ActualSea;
+   
+        public static Sea SearchName(string name)
+        {
+            foreach (Sea sea in seas)
+            {
+                if (sea.Name == name)
+                {
+                    return sea;
+                }
 
+            }
+            return null;
+        }
         public static void Add(Sea sea)
         {
             seas.Add(sea);
