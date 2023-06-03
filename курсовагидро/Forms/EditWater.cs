@@ -21,9 +21,11 @@ namespace курсовагидро.Forms
 
         private string objectType; //  поле для визначення типу об'єкту (річка, озеро або море)
         private string name;
-   
+        string file = "TextFile1.txt";
         public EditWater(string name, string objectType)
         {
+          
+        
             this.name = name;
             InitializeComponent();
             textBox1.Text = name;
@@ -71,9 +73,13 @@ namespace курсовагидро.Forms
 
             System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
             path.AddArc(0, 0, borderRadius, borderRadius, 180, 90); // Ліва верхня дуга
-            path.AddArc(button.Width - borderRadius, 0, borderRadius, borderRadius, 270, 90); // Права верхня дуга
-            path.AddArc(button.Width - borderRadius, button.Height - borderRadius, borderRadius, borderRadius, 0, 90); // Права нижня дуга
-            path.AddArc(0, button.Height - borderRadius, borderRadius, borderRadius, 90, 90); // Ліва нижня дуга
+            // Права верхня дуга
+            path.AddArc(button.Width - borderRadius, 0, borderRadius, borderRadius, 270, 90);
+            
+            path.AddArc(button.Width - borderRadius,
+                button.Height - borderRadius, borderRadius, borderRadius, 0, 90); // Права нижня дуга
+            path.AddArc(0, button.Height - borderRadius, borderRadius, borderRadius, 90, 90);
+            // Ліва нижня дуга
             path.CloseAllFigures();
 
             button.Region = new Region(path);
@@ -81,6 +87,7 @@ namespace курсовагидро.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
+
             if (objectType == "Річки")
             {
                 Rivers.ActualRiver.Name = textBox1.Text;
@@ -89,6 +96,7 @@ namespace курсовагидро.Forms
                 Rivers.ActualRiver.Flow = Convert.ToInt32(textBox4.Text);
                 Rivers.ActualRiver.AnnualFlow = Convert.ToDouble(textBox5.Text);
                 Rivers.ActualRiver.BasinArea = Convert.ToDouble(textBox6.Text);
+                MessageBox.Show("Річку відредаговано");
             }
             else if (objectType == "Озера")
             {
@@ -98,7 +106,7 @@ namespace курсовагидро.Forms
                 Lakes.ActualLake.Flow = Convert.ToInt32(textBox4.Text);
                 Lakes.ActualLake.AnnualFlow = Convert.ToDouble(textBox5.Text);
                 Lakes.ActualLake.BasinArea = Convert.ToDouble(textBox6.Text);
-           
+                MessageBox.Show("Озеро відредаговано");
             }
             else if (objectType == "Моря")
             {
@@ -108,8 +116,11 @@ namespace курсовагидро.Forms
                 Seas.ActualSea.Flow = Convert.ToInt32(textBox4.Text);
                 Seas.ActualSea.AnnualFlow = Convert.ToDouble(textBox5.Text);
                 Seas.ActualSea.BasinArea = Convert.ToDouble(textBox6.Text);
-
+                MessageBox.Show("Море відредаговано");
             }
+            Dataclass.ClearFile(file);
+            Dataclass.SaveDataToFile(file);
+            this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -117,10 +128,5 @@ namespace курсовагидро.Forms
             this.Close();
         }
     }
-
-
-
-
-   
 }
 

@@ -25,7 +25,7 @@ namespace курсовагидро
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Помилка при експорті даних: " + ex.Message);
+                MessageBox.Show("Помилка при перезаписі файла: " + ex.Message);
             }
         }
        
@@ -134,23 +134,26 @@ namespace курсовагидро
                     // Записываем данные о реках
                     foreach (River river in Rivers.rivers)
                     {
-                        writer.WriteLine($"River,{river.Name},{river.Length},{river.Flow},{river.Countries},{river.width},{string.Join(";", river.Tributaries)}");
+                        writer.WriteLine($"River,{river.Name},{river.Length},{river.Flow}," +
+                            $"{river.Countries},{river.width},{string.Join(";", river.Tributaries)}");
                     }
 
                     // Записываем данные об озерах
                     foreach (Lake lake in Lakes.lakes)
                     {
-                        writer.WriteLine($"Lake,{lake.Name},{lake.Length},{lake.Flow},{lake.Countries},{lake.width}");
+                        writer.WriteLine($"Lake,{lake.Name},{lake.Length}," +
+                            $"{lake.Flow},{lake.Countries},{lake.width}");
                     }
 
                     // Записываем данные о морях
                     foreach (Sea sea in Seas.seas)
                     {
-                        writer.WriteLine($"Sea,{sea.Name},{sea.Length},{sea.Flow},{sea.Countries},{sea.width}");
+                        writer.WriteLine($"Sea,{sea.Name},{sea.Length}," +
+                            $"{sea.Flow},{sea.Countries},{sea.width}");
                     }
                 }
 
-                MessageBox.Show("Дані були успішно збережені у файлі.");
+               
             }
             catch (Exception ex)
             {

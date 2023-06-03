@@ -18,22 +18,22 @@ namespace курсовагидро
         public Accept()
         {
             InitializeComponent();
-            AddRiver = false; // Default value is set to false
+            AddRiver = false; 
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AddRiver = true; // Set the flag to indicate that a river should be added
-            this.DialogResult = DialogResult.OK; // Set the dialog result to OK
-            this.Close(); // Close the form
+            AddRiver = true; // прапорець тру
+            this.DialogResult = DialogResult.OK; // результат ОК
+            this.Close(); 
         }
       
         private void button2_Click(object sender, EventArgs e)
         {
-            AddRiver = false; // Set the flag to indicate that no action should be taken
-            this.DialogResult = DialogResult.Cancel; // Set the dialog result to Cancel
-            this.Close(); // Close the form
+            AddRiver = false; // не видаляємо
+            this.DialogResult = DialogResult.Cancel; // Відміна
+            this.Close(); 
         }
 
       

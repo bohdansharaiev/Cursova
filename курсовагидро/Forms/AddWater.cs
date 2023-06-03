@@ -78,9 +78,12 @@ namespace курсовагидро
                                 string[] t;
 
                                 // Check if any field is empty
-                                if (string.IsNullOrWhiteSpace(textBox1.Text) || string.IsNullOrWhiteSpace(textBox2.Text) ||
-                                    string.IsNullOrWhiteSpace(textBox3.Text) || string.IsNullOrWhiteSpace(textBox4.Text) ||
-                                    string.IsNullOrWhiteSpace(textBox5.Text) || string.IsNullOrWhiteSpace(textBox6.Text))
+                                if (string.IsNullOrWhiteSpace(textBox1.Text) || 
+                                    string.IsNullOrWhiteSpace(textBox2.Text) ||
+                                    string.IsNullOrWhiteSpace(textBox3.Text) ||
+                                    string.IsNullOrWhiteSpace(textBox4.Text) ||
+                                    string.IsNullOrWhiteSpace(textBox5.Text) ||
+                                    string.IsNullOrWhiteSpace(textBox6.Text))
                                 {
                                     MessageBox.Show("Будь ласка, заповніть всі поля.");
                                     return;
@@ -183,15 +186,6 @@ namespace курсовагидро
                             }
                             catch (Exception ex)
                             {
-                                if (ex.TargetSite.Name == "ToInt32")
-                                {
-                                    textBox2.BackColor = Color.Red; // Зміна кольору текстового поля textBox2 на червоний
-                                }
-                                else if (ex.TargetSite.Name == "ToDouble")
-                                {
-                                    textBox3.BackColor = Color.Red; // Зміна кольору текстового поля textBox3 на червоний
-                                }
-
                                 MessageBox.Show("Помилка неправильний тип даних: " + ex.Message);
                             }
                         }
@@ -201,8 +195,10 @@ namespace курсовагидро
                             try
                             {
                                 // Check if any field is empty
-                                if (string.IsNullOrWhiteSpace(textBox1.Text) || string.IsNullOrWhiteSpace(textBox2.Text) ||
-                                    string.IsNullOrWhiteSpace(textBox3.Text) || string.IsNullOrWhiteSpace(textBox4.Text) ||
+                                if (string.IsNullOrWhiteSpace(textBox1.Text) ||
+                                    string.IsNullOrWhiteSpace(textBox2.Text) ||
+                                    string.IsNullOrWhiteSpace(textBox3.Text) ||
+                                    string.IsNullOrWhiteSpace(textBox4.Text) ||
                                     string.IsNullOrWhiteSpace(textBox5.Text))
                                 {
                                     MessageBox.Show("Будь ласка, заповніть всі поля.");
@@ -228,7 +224,8 @@ namespace курсовагидро
 
                                    
                                         Seas.Add(new Sea(textBox1.Text, Convert.ToInt32(textBox2.Text),
-                                            Convert.ToDouble(textBox3.Text), textBox4.Text, Convert.ToInt32(textBox5.Text)));
+                                            Convert.ToDouble(textBox3.Text), textBox4.Text,
+                                            Convert.ToInt32(textBox5.Text)));
 
                                         MessageBox.Show("Море додано");
                                         string file = "TextFile1.txt";
@@ -264,7 +261,7 @@ namespace курсовагидро
             }
             else
             {
-                textBox6.Visible = false;
+               
                 MessageBox.Show("Виберіть водне тіло");
             }
         }

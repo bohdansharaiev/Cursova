@@ -52,8 +52,8 @@ River,Thames,346,346,United Kingdom,50,North Sea
 River,Yangtze,6,300,China,50,East China Sea
 River,Niger,4,184,Nigeria,50,Gulf of Guinea
 River,Colorado,2,334,United States,50,Gulf of California
-River,dft222,2,2,2,21,111;111;111
-River,olegnigga,2,2,2,2,2
+River,olegне нига,2,2,2,2,2
+River,2,2,2,2,2,2
 Lake,Tanganyika,6650,2830,Egypt,50
 Lake,Poyang,6300,3080,China,50
 Lake,Mississippi,6275,16500,United States,50
@@ -109,6 +109,7 @@ Lake,Malawi,29,600, 706,40
 Lake,Winnipeg,23,553, 435,40
 Lake,Erie,25,667, 388,40
 Lake,цууу,1,1,1,1
+Lake,2,2,2,2,2
 Sea,Red Sea,6650,2830,Egypt,120
 Sea,Yellow Sea,6300,3080,China,120
 Sea,Gulf of Mexico,6275,16500,United States,120
