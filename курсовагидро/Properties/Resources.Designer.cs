@@ -113,6 +113,16 @@ namespace курсовагидро.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap pngtree_search_vector_icon_png_image_696422 {
+            get {
+                object obj = ResourceManager.GetObject("pngtree-search-vector-icon-png-image_696422", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap radial_gradient_top_left {
             get {
                 object obj = ResourceManager.GetObject("radial-gradient-top-left", resourceCulture);

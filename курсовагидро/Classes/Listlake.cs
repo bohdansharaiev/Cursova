@@ -18,7 +18,7 @@ namespace курсовагидро
         public string Countries;
         public int width;
         public double AnnualFlow;
-        public int BasinArea;
+        public double BasinArea;
         public Lake(string name, int length, double flow, string countries,int width)
         {
             Name = name;

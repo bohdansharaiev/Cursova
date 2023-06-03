@@ -20,7 +20,7 @@ namespace курсовагидро
         public string Countries;
         public int width;
         public double AnnualFlow; // Додати поле для річного стоку
-        public int BasinArea;
+        public double BasinArea;
         public string[] Tributaries; // Масив для зберігання прилеглих річок
 
         public River(string name, int length, double flow, string countries, int width,string[] tributaries)

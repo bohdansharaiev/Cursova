@@ -59,46 +59,46 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Dataclass.cs" />
-    <Compile Include="Forms\Form1.cs">
+    <Compile Include="Forms\Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Forms\Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Form2.cs">
+    <Compile Include="Forms\AddWater.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <Compile Include="Forms\AddWater.Designer.cs">
+      <DependentUpon>AddWater.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Form3.cs">
+    <Compile Include="Forms\Accept.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form3.Designer.cs">
-      <DependentUpon>Form3.cs</DependentUpon>
+    <Compile Include="Forms\Accept.Designer.cs">
+      <DependentUpon>Accept.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Listlake.cs" />
     <Compile Include="Classes\Listriv.cs" />
     <Compile Include="Classes\Listsea.cs" />
-    <Compile Include="Forms\Form4.cs">
+    <Compile Include="Forms\EditWater.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form4.Designer.cs">
-      <DependentUpon>Form4.cs</DependentUpon>
+    <Compile Include="Forms\EditWater.Designer.cs">
+      <DependentUpon>EditWater.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AddWater.resx">
+      <DependentUpon>AddWater.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Form3.resx">
-      <DependentUpon>Form3.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Accept.resx">
+      <DependentUpon>Accept.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Form4.resx">
-      <DependentUpon>Form4.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\EditWater.resx">
+      <DependentUpon>EditWater.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -126,6 +126,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="file.txt" />
+    <None Include="Resources\pngtree-search-vector-icon-png-image_696422.jpg" />
     <None Include="Resources\mountains-nature-sky-river-beautiful-scenery-wallpaper-preview.jpg" />
     <None Include="Resources\Без названия %281%29.jpg" />
     <None Include="Resources\lovepik-smoke-color-mobile-wallpaper-background-image_400951853.jpg" />

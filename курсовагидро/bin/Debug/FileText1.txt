@@ -108,7 +108,6 @@ Lake,Great Bear Lake,31,80, 1,40
 Lake,Malawi,29,600, 706,40
 Lake,Winnipeg,23,553, 435,40
 Lake,Erie,25,667, 388,40
-Lake,цууу,1,1,1,1
 Sea,Red Sea,6650,2830,Egypt,120
 Sea,Yellow Sea,6300,3080,China,120
 Sea,Gulf of Mexico,6275,16500,United States,120
