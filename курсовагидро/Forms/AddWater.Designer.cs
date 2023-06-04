@@ -41,8 +41,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // textBox1
@@ -75,7 +73,7 @@
             // textBox4
             // 
             this.textBox4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox4.Location = new System.Drawing.Point(319, 213);
+            this.textBox4.Location = new System.Drawing.Point(319, 222);
             this.textBox4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(280, 21);
@@ -85,34 +83,34 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(438, 69);
+            this.label2.Location = new System.Drawing.Point(427, 69);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 15);
+            this.label2.Size = new System.Drawing.Size(91, 15);
             this.label2.TabIndex = 5;
-            this.label2.Text = "назва";
+            this.label2.Text = "Назва водойми";
             // 
             // label3
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(427, 111);
+            this.label3.Location = new System.Drawing.Point(400, 111);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 15);
+            this.label3.Size = new System.Drawing.Size(133, 15);
             this.label3.TabIndex = 6;
-            this.label3.Text = "довжина";
+            this.label3.Text = "Довжина водойми(км)";
             // 
             // label4
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(438, 153);
+            this.label4.Location = new System.Drawing.Point(427, 153);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(37, 15);
+            this.label4.Size = new System.Drawing.Size(68, 15);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Течія";
+            this.label4.Text = "Стік(м^3/c)";
             // 
             // label5
             // 
@@ -148,7 +146,7 @@
             this.comboBox1.Size = new System.Drawing.Size(239, 23);
             this.comboBox1.TabIndex = 10;
             this.comboBox1.Text = "Вибрати тип водойми";
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+           
             // 
             // button2
             // 
@@ -166,50 +164,28 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(400, 237);
+            this.label1.Location = new System.Drawing.Point(385, 255);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(131, 15);
+            this.label1.Size = new System.Drawing.Size(148, 15);
             this.label1.TabIndex = 12;
-            this.label1.Text = "Максимальна ширина";
+            this.label1.Text = "Максимальна ширина(м)";
             // 
             // textBox5
             // 
             this.textBox5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox5.Location = new System.Drawing.Point(319, 255);
+            this.textBox5.Location = new System.Drawing.Point(319, 273);
             this.textBox5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(280, 21);
             this.textBox5.TabIndex = 13;
             // 
-            // label6
-            // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(427, 279);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(73, 15);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Куди впадає";
-            // 
-            // textBox6
-            // 
-            this.textBox6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox6.Location = new System.Drawing.Point(319, 297);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(280, 21);
-            this.textBox6.TabIndex = 15;
-            // 
-            // Form2
+            // AddWater
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(934, 519);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
@@ -225,7 +201,7 @@
             this.Controls.Add(this.textBox1);
             this.Font = new System.Drawing.Font("Times New Roman", 9.12F);
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.Name = "Form2";
+            this.Name = "AddWater";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Додавання водойми";
             this.Load += new System.EventHandler(this.Form2_Load);
@@ -249,7 +225,5 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox6;
     }
 }

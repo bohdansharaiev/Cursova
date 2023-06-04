@@ -9,7 +9,7 @@ namespace курсовагидро
 {
     internal class Listriv
     {
-        
+
     }
 
     public class River
@@ -19,36 +19,41 @@ namespace курсовагидро
         public double Flow;
         public string Countries;
         public int width;
-        public double AnnualFlow; // Додати поле для річного стоку
+        public double AnnualFlow;
         public double BasinArea;
-        public string[] Tributaries; // Масив для зберігання прилеглих річок
+        public List<River> Trib = new List<River>();
 
-        public River(string name, int length, double flow, string countries, int width,string[] tributaries)
+        public River(string name, int length, double flow, string countries, int width)
         {
             Name = name;
             Length = length;
             Flow = flow;
             Countries = countries;
             this.width = width;
-            Tributaries = tributaries;
+
             CalculateAnnualFlow();
-            this.AnnualFlow = AnnualFlow ;
             CalculateArea();
-            this.BasinArea = BasinArea;
         }
 
-        private void CalculateAnnualFlow()
+       public void CalculateAnnualFlow()
         {
-            // Обчислити річний сток і присвоїти його полю AnnualFlow
-            // Припустимо, що величина Flow вимірюється в кубометрах на секунду.
-            // Для обчислення річного стоку потрібно помножити потік на кількість секунд у році (60 секунд * 60 хвилин * 24 години * 365 днів).
             AnnualFlow = Flow * 60 * 60 * 24 * 365;
+
+            foreach (River tributary in Trib)
+            {
+                AnnualFlow += tributary.AnnualFlow;
+            }
         }
-        private void CalculateArea()
+
+       public void CalculateArea()
         {
             BasinArea = Length * width;
+
+            foreach (River tributary in Trib)
+            {
+                BasinArea += tributary.BasinArea;
+            }
         }
-      
     }
 
     public static class Rivers
@@ -57,23 +62,46 @@ namespace курсовагидро
 
         public static River ActualRiver;
         public static List<River> rivers = new List<River>();
+
         public static River SearchName(string name)
         {
-            foreach(River river in rivers)
+            foreach (River river in rivers)
             {
-                if(river.Name == name)
+                if (river.Name == name)
                 {
                     return river;
                 }
-                
             }
             return null;
         }
+
         public static void Add(River river)
         {
             rivers.Add(river);
         }
-    }
-    
 
+        public static double CalculateTotalFlow(River river)
+        {
+            double totalFlow = river.Flow;
+
+            foreach (River tributary in river.Trib)
+            {
+                totalFlow += CalculateTotalFlow(tributary);
+            }
+
+            return totalFlow;
+        }
+
+        public static double CalculateTotalArea(River river)
+        {
+            double totalArea = river.BasinArea;
+
+            foreach (River tributary in river.Trib)
+            {
+                totalArea += CalculateTotalArea(tributary);
+            }
+
+            return totalArea;
+        }
+    }
 }

@@ -48,8 +48,7 @@ namespace курсовагидро
             comboBox1.Items.Add("Річки");
             comboBox1.Items.Add("Озера");
             comboBox1.Items.Add("Моря");
-            textBox6.Visible = false;
-            label6.Visible = false;
+          
             
         }
         
@@ -75,15 +74,15 @@ namespace курсовагидро
                                 double flow;
                                 string countries;
                                 int width;
-                                string[] t;
+                              
 
                                 // Check if any field is empty
                                 if (string.IsNullOrWhiteSpace(textBox1.Text) || 
                                     string.IsNullOrWhiteSpace(textBox2.Text) ||
                                     string.IsNullOrWhiteSpace(textBox3.Text) ||
                                     string.IsNullOrWhiteSpace(textBox4.Text) ||
-                                    string.IsNullOrWhiteSpace(textBox5.Text) ||
-                                    string.IsNullOrWhiteSpace(textBox6.Text))
+                                    string.IsNullOrWhiteSpace(textBox5.Text) )
+                                 
                                 {
                                     MessageBox.Show("Будь ласка, заповніть всі поля.");
                                     return;
@@ -94,7 +93,7 @@ namespace курсовагидро
                                 flow = Convert.ToDouble(textBox3.Text);
                                 countries = textBox4.Text;
                                 width = Convert.ToInt32(textBox5.Text);
-                                t = textBox6.Text.Split(';').Select(s => s.Trim()).ToArray();
+                              
 
                                 // перевірка чи існує вже річка
                                 foreach (River river in Rivers.rivers)
@@ -107,13 +106,13 @@ namespace курсовагидро
                                         textBox3.Text = "";
                                         textBox4.Text = "";
                                         textBox5.Text = "";
-                                        textBox6.Text = "";
+                                     
                                         return;
                                     }
                                 }
 
                                 // Додаємо ріку
-                                River newRiver = new River(textBox1.Text, length, flow, countries, width, t);
+                                River newRiver = new River(textBox1.Text, length, flow, countries, width);
                                 Rivers.Add(newRiver);
 
                                 // Оновлення таблиці з водними об'єктами
@@ -129,7 +128,7 @@ namespace курсовагидро
                                 textBox3.Text = "";
                                 textBox4.Text = "";
                                 textBox5.Text = "";
-                                textBox6.Text = "";
+                              
                             }
                             catch (Exception ex)
                             {
@@ -273,18 +272,6 @@ namespace курсовагидро
             
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboBox1.SelectedItem.ToString() == "Річки")
-            {
-                textBox6.Visible = true;
-                label6.Visible = true;
-            }
-            else
-            {
-                textBox6.Visible = false;
-                label6.Visible = false;
-            }
-        }
+      
     }
 }

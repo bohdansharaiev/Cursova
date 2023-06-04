@@ -38,6 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.button5 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -53,6 +54,7 @@
             this.comboBox1.Size = new System.Drawing.Size(240, 23);
             this.comboBox1.TabIndex = 0;
             this.comboBox1.Text = "Вибрати тип водойми";
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -160,6 +162,7 @@
             this.panel3.BackColor = System.Drawing.Color.LightSlateGray;
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.button5);
             this.panel3.Controls.Add(this.button2);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.label1);
@@ -170,6 +173,20 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(481, 405);
             this.panel3.TabIndex = 17;
+            // 
+            // button5
+            // 
+            this.button5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button5.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button5.Location = new System.Drawing.Point(43, 305);
+            this.button5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(158, 58);
+            this.button5.TabIndex = 19;
+            this.button5.Text = "Додати притоку";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button2
             // 
@@ -185,7 +202,7 @@
             this.button2.TabIndex = 18;
             this.button2.UseVisualStyleBackColor = false;
             // 
-            // Form1
+            // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -200,7 +217,7 @@
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Font = new System.Drawing.Font("Times New Roman", 9.12F);
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.Name = "Form1";
+            this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Довідник Гідролога";
             this.Load += new System.EventHandler(this.Main_Load);
@@ -225,6 +242,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button5;
     }
 }
 

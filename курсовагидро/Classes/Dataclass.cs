@@ -42,15 +42,15 @@ namespace курсовагидро
                     while ((line = reader.ReadLine()) != null)
                     {
                         string[] parts = line.Split(',');
-                        if (parts.Length >= 7 && parts[0] == "River")
+                        if (parts.Length >= 6 && parts[0] == "River")
                         {
                             string name = parts[1];
                             int length = int.Parse(parts[2]);
                             double flow = double.Parse(parts[3]);
                             string countries = parts[4];
                             int width = int.Parse(parts[5]);
-                            string[] tributaries = parts[6].Split(';');
-                            River river = new River(name, length, flow, countries, width, tributaries);
+                            
+                            River river = new River(name, length, flow, countries, width);
                             rivers.Add(river);
                         }
                     }
@@ -135,7 +135,7 @@ namespace курсовагидро
                     foreach (River river in Rivers.rivers)
                     {
                         writer.WriteLine($"River,{river.Name},{river.Length},{river.Flow}," +
-                            $"{river.Countries},{river.width},{string.Join(";", river.Tributaries)}");
+                            $"{river.Countries},{river.width}");
                     }
 
                     // Записываем данные об озерах

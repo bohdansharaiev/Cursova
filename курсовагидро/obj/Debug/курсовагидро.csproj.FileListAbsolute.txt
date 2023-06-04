@@ -71,3 +71,4 @@ C:\Users\Богдан\source\repos\курсоваgидро3\курсовагид
 C:\Users\Богдан\source\repos\курсоваgидро3\курсовагидро\obj\Debug\курсовагидро.AddWater.resources
 C:\Users\Богдан\source\repos\курсоваgидро3\курсовагидро\obj\Debug\курсовагидро.Accept.resources
 C:\Users\Богдан\source\repos\курсоваgидро3\курсовагидро\obj\Debug\курсовагидро.Forms.EditWater.resources
+C:\Users\Богдан\source\repos\курсоваgидро3\курсовагидро\obj\Debug\курсовагидро.Forms.Pritoki.resources
