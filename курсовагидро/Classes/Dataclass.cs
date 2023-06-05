@@ -80,7 +80,7 @@ namespace курсовагидро
                         }
                     }
                 }
-                Lakes.lakes = lakes;  // Replace the existing list with the loaded lakes
+                Lakes.lakes = lakes;  
                
             }
             catch (Exception ex)

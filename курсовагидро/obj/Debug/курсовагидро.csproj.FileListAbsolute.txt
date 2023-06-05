@@ -60,11 +60,8 @@ C:\Users\Богдан\source\repos\курсоваgидро3\курсовагид
 C:\Users\Богдан\source\repos\курсоваgидро3\курсовагидро\bin\Debug\курсовагидро.exe.config
 C:\Users\Богдан\source\repos\курсоваgидро3\курсовагидро\bin\Debug\курсовагидро.exe
 C:\Users\Богдан\source\repos\курсоваgидро3\курсовагидро\bin\Debug\курсовагидро.pdb
-C:\Users\Богдан\source\repos\курсоваgидро3\курсовагидро\bin\Debug\CodeeloUI.dll
 C:\Users\Богдан\source\repos\курсоваgидро3\курсовагидро\bin\Debug\MaterialSkin.dll
-C:\Users\Богдан\source\repos\курсоваgидро3\курсовагидро\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Богдан\source\repos\курсоваgидро3\курсовагидро\bin\Debug\System.Drawing.Common.dll
-C:\Users\Богдан\source\repos\курсоваgидро3\курсовагидро\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Богдан\source\repos\курсоваgидро3\курсовагидро\bin\Debug\System.Drawing.Common.xml
 C:\Users\Богдан\source\repos\курсоваgидро3\курсовагидро\obj\Debug\курсовагидро.csproj.CopyComplete
 C:\Users\Богдан\source\repos\курсоваgидро3\курсовагидро\obj\Debug\курсовагидро.Main.resources
