@@ -41,6 +41,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // textBox1
@@ -146,7 +147,7 @@
             this.comboBox1.Size = new System.Drawing.Size(239, 23);
             this.comboBox1.TabIndex = 10;
             this.comboBox1.Text = "Вибрати тип водойми";
-           
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // button2
             // 
@@ -180,12 +181,20 @@
             this.textBox5.Size = new System.Drawing.Size(280, 21);
             this.textBox5.TabIndex = 13;
             // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(634, 89);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(288, 268);
+            this.panel1.TabIndex = 14;
+            // 
             // AddWater
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(934, 519);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
@@ -225,5 +234,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Panel panel1;
     }
 }

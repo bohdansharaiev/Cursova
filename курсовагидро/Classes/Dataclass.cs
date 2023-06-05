@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static курсовагидро.Main;
 using System.IO;
-using Newtonsoft.Json;
 using System.Windows.Forms;
 
 namespace курсовагидро
@@ -55,7 +50,7 @@ namespace курсовагидро
                         }
                     }
                 }
-                Rivers.rivers = rivers;
+                RiverList.rivers = rivers;
             }
             catch (Exception ex)
             {
@@ -132,7 +127,7 @@ namespace курсовагидро
                 using (StreamWriter writer = new StreamWriter(filePath))
                 {
                     // Записываем данные о реках
-                    foreach (River river in Rivers.rivers)
+                    foreach (River river in RiverList.rivers)
                     {
                         writer.WriteLine($"River,{river.Name},{river.Length},{river.Flow}," +
                             $"{river.Countries},{river.width}");

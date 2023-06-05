@@ -19,23 +19,24 @@ namespace курсовагидро
         public int width;
         public double AnnualFlow;
         public double BasinArea;
-        public Sea(string name, int length, double flow, string countries, int width)
+        public Sea(string name, int length, double flow,
+            string countries, int width)
+
         {
             Name = name;
             Length = length;
             Flow = flow;
             Countries = countries;
             this.width = width;
-            CalculateAnnualFlow(); // Обчислити річний сток при створенні об'єкта
+            CalculateAnnualFlow(); 
             CalculateArea();
         }
+        // річний стік
         private void CalculateAnnualFlow()
         {
-            // Обчислити річний сток і присвоїти його полю AnnualFlow
-            // Припустимо, що величина Flow вимірюється в кубометрах на секунду.
-            // Для обчислення річного стоку потрібно помножити потік на кількість секунд у році (60 секунд * 60 хвилин * 24 години * 365 днів).
             AnnualFlow = Flow * 60 * 60 * 24 * 365;
         }
+        // площа басейну
         private void CalculateArea()
         {
             BasinArea = Length * width;
@@ -50,15 +51,7 @@ namespace курсовагидро
    
         public static Sea SearchName(string name)
         {
-            foreach (Sea sea in seas)
-            {
-                if (sea.Name == name)
-                {
-                    return sea;
-                }
-
-            }
-            return null;
+            return seas.Find(sea => sea.Name == name);
         }
         public static void Add(Sea sea)
         {

@@ -15,7 +15,7 @@ River,Orinoco,2740,3350,Venezuela,40
 River,Zambezi,2574,1060,Zambia,40
 River,Great Salt Lake,3034,4000,United States,40
 River,Dnieperу,2290,1740,Ukraine,40
-River,Tigris,2787,986,Iraq,40
+River,Tigris,2000,986,Iraq,40
 Lake,Tanganyika,6650,2830,Egypt,50
 Lake,Poyang,6300,3080,China,50
 Lake,Mississippi,6275,16500,United States,50
@@ -35,7 +35,6 @@ Lake,Volga,3530,8000,Russia,40
 Lake,Kariba,3180,2250,Pakistan,40
 Lake,Balaton,2850,2010,Germany,40
 Lake,Guri,2740,3350,Venezuela,40
-Lake,Assad,2787,986,Iraq,40
 Lake,Eyre,2500,2430,Australia,40
 Lake,Constance,1233,2330,Switzerland,40
 Lake,Inle,2415,2040,Myanmar,40
@@ -67,11 +66,7 @@ Lake,Great Bear Lake,31,80, 1,40
 Lake,Malawi,29,600, 706,40
 Lake,Winnipeg,23,553, 435,40
 Lake,Erie,25,667, 388,40
-Lake,цууу,1,1,1,1
-Lake,к,1,1,к,1
-Lake,2,2,2,2,2
-Lake,Blue Lake,1000,300,Ukraine,1000
-Sea,Red Sea,6650,2830,Egypt,120
+Lake,Assad,2567,2341,India,345
 Sea,Yellow Sea,6300,3080,China,120
 Sea,Gulf of Mexico,6275,16500,United States,120
 Sea,Kara Sea,5545,19320,Russia,120
@@ -123,6 +118,6 @@ Sea,Arabian Sea,3,862,000,120
 Sea,Bering Sea,2,275,000,120
 Sea,Gulf of Mexico,1,554,000,120
 Sea,North Sea,570,0, 575,120
-Sea,Red Sea,438,0, 442,120
 Sea,Baltic Sea,412,0, 464,120
 Sea,Persian Gulf,251,0, 17,120
+Sea,Red Sea,1230,27,Egypt,209
