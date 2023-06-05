@@ -17,7 +17,7 @@ namespace курсовагидро
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AddRiver = true; // прапорець тру
+            AddRiver = true; // прапорець 
             this.DialogResult = DialogResult.OK; // результат ОК
             this.Close(); 
         }

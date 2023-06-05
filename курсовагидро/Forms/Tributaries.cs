@@ -27,10 +27,11 @@ namespace курсовагидро.Forms
                         ActualRiver.Trib.Contains(river))
                     {
                         MessageBox.Show("Дана притока вже існує");
+                        
                     }
                     else
                     {
-                        if (RiverList.ActualRiver != null)
+                        if (RiverList.ActualRiver != null && RiverList.ActualRiver.Name != river.Name)
                         {
                             RiverList.ActualRiver.Trib.Add(river);
                             RiverList.ActualRiver.CalculateAnnualFlow();

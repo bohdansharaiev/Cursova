@@ -16,10 +16,12 @@ namespace курсовагидро
     {
         string file = "TextFile1.txt";
         private int count = 0;
+
         public Main()
         {
             InitializeComponent();
-
+           
+           
             dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
 
 
@@ -159,6 +161,7 @@ namespace курсовагидро
             dataGridView1.Refresh(); // Оновити відображення таблиці
         }
         // видалення
+
         private void dataGridView1_CellDoubleClick(object sender,
             DataGridViewCellEventArgs e)
         {
@@ -178,7 +181,6 @@ namespace курсовагидро
 
                     if (comboBox1.SelectedItem != null)
                     {
-                        // Удаляем элемент из списка
                         if (comboBox1.SelectedItem.ToString() == "Річки")
                         {
 
@@ -308,7 +310,7 @@ namespace курсовагидро
                         if (river.Name.ToLower().IndexOf(searchText) >= 0)
                         {
                             table.Rows.Add(river.Name,
-                                river.Countries, river.Length, river.Flow, river.AnnualFlow);
+                                river.Countries, river.Length, river.Flow, river.AnnualFlow,river.BasinArea);
                         }
                     }
 
@@ -318,7 +320,7 @@ namespace курсовагидро
                             ) >= 0)
                         {
                             table.Rows.Add(lake.Name, lake.Countries,
-                                lake.Length, lake.Flow, lake.AnnualFlow); ;
+                                lake.Length, lake.Flow, lake.AnnualFlow,lake.BasinArea); ;
                         }
                     }
 
@@ -327,7 +329,7 @@ namespace курсовагидро
                         if (sea.Name.ToLower().IndexOf(searchText) >= 0)
                         {
                             table.Rows.Add(sea.Name, sea.Countries, sea.Length, sea.Flow,
-                                sea.AnnualFlow);
+                                sea.AnnualFlow, sea.BasinArea);
                         }
                     }
                 }
@@ -441,6 +443,8 @@ namespace курсовагидро
                         RiverList.ActualRiver = RiverList.SearchName(name);
                         Tributaries form5 = new Tributaries();
                         form5.ShowDialog();
+                        Dataclass.ClearFile(file);
+                        Dataclass.SaveDataToFile(file);
                     }
                     else if (comboBox1.SelectedItem.ToString() == "Озера")
                     {
@@ -459,6 +463,7 @@ namespace курсовагидро
                     MessageBox.Show("Будь ласка, виберіть тип об'єкту!");
                     return;
                 }
+                
                 // Оновлення таблиці
                 Print(RiverList.rivers, Lakes.lakes, Seas.seas);
             }
@@ -478,20 +483,23 @@ namespace курсовагидро
         {
 
             count++;
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+
             if (count % 2 == 0)
             {
-                button6.BackgroundImage = Properties.Resources.moon;
-                panel3.BackColor = Color.LightSlateGray;
-                label1.BackColor = Color.LightSlateGray;
+                button6.BackgroundImage = Properties.Resources.sun;
+                materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+                label1.BackColor = Color.White;
             }
             else
             {
-                button6.BackgroundImage = Properties.Resources.sun;
-                label1.BackColor = Color.White;
-                panel3.BorderStyle = BorderStyle.None;
-                panel3.BackColor = Color.White;
-                
+                button6.BackgroundImage = Properties.Resources.moon;
+                materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+                label1.BackColor = Color.LightSlateGray;
             }
+
+            
             button6.BackgroundImageLayout = ImageLayout.Stretch;
         }
     }

@@ -36,6 +36,7 @@
             // 
             // textBox1
             // 
+            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBox1.Location = new System.Drawing.Point(158, 118);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(278, 20);
@@ -43,6 +44,7 @@
             // 
             // button1
             // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button1.Location = new System.Drawing.Point(425, 170);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(132, 52);
@@ -53,6 +55,7 @@
             // 
             // button2
             // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button2.Location = new System.Drawing.Point(38, 170);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(132, 52);
@@ -63,6 +66,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(181, 80);
@@ -80,7 +84,9 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
+            this.MinimumSize = new System.Drawing.Size(635, 294);
             this.Name = "Tributaries";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Притоки";
             this.ResumeLayout(false);
             this.PerformLayout();

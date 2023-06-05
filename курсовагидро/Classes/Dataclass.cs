@@ -112,7 +112,7 @@ namespace курсовагидро
                         }
                     }
                 }
-                Seas.seas = seas;  // Replace the existing list with the loaded seas
+                Seas.seas = seas; 
               
             }
             catch (Exception ex)
@@ -126,21 +126,19 @@ namespace курсовагидро
             {
                 using (StreamWriter writer = new StreamWriter(filePath))
                 {
-                    // Записываем данные о реках
                     foreach (River river in RiverList.rivers)
                     {
                         writer.WriteLine($"River,{river.Name},{river.Length},{river.Flow}," +
                             $"{river.Countries},{river.width}");
                     }
 
-                    // Записываем данные об озерах
+                   
                     foreach (Lake lake in Lakes.lakes)
                     {
                         writer.WriteLine($"Lake,{lake.Name},{lake.Length}," +
                             $"{lake.Flow},{lake.Countries},{lake.width}");
                     }
 
-                    // Записываем данные о морях
                     foreach (Sea sea in Seas.seas)
                     {
                         writer.WriteLine($"Sea,{sea.Name},{sea.Length}," +

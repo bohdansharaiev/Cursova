@@ -1,11 +1,11 @@
-River,Lena,5545,19320,Russia,50
+River,Lena,10000,19320,Russia,50
 River,Volga,5410,12600,Russia,50
 River,Congo,4700,4130,DR Congo,50
 River,Irtysh,4444,11620,Russia,50
-River,Don,4400,17300,Russia,50
+River,Don,234,17300,Russia,50
 River,Mekong,4350,2950,Vietnam,50
 River,Slave,4241,10700,Canada,50
-River,Niger,4184,1600,Nigeria,50
+River,Nigererer,4184,1600,Nigeria,50
 River,Ganges,3914,20000,India,50
 River,Murray,3750,9570,Australia,50
 River,Rhine,3530,8000,Russia,40

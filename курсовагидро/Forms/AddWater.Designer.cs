@@ -183,6 +183,7 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.Location = new System.Drawing.Point(634, 89);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(288, 268);
@@ -210,6 +211,7 @@
             this.Controls.Add(this.textBox1);
             this.Font = new System.Drawing.Font("Times New Roman", 9.12F);
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.MinimumSize = new System.Drawing.Size(934, 519);
             this.Name = "AddWater";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Додавання водойми";
