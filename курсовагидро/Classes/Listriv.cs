@@ -56,8 +56,6 @@ namespace курсовагидро
 
     public static class RiverList
     {
-        public static bool fl = true;
-
         public static River ActualRiver;
         public static List<River> rivers = new List<River>();
         // метод пошуку річки по назві

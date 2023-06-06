@@ -69,10 +69,11 @@ namespace курсовагидро.Forms
                 MessageBox.Show("Будь ласка, заповніть всі поля.");
                 return;
             }
-            if (!int.TryParse(textBox2.Text, out int length) ||
-    !int.TryParse(textBox4.Text, out int flow) ||
-    !double.TryParse(textBox5.Text, out double annualFlow) ||
-    !double.TryParse(textBox6.Text, out double basinArea))
+
+            if (!int.TryParse(textBox2.Text, out int length) || length<=0 ||   
+    !int.TryParse(textBox4.Text, out int flow) || flow<=0 ||
+    !double.TryParse(textBox5.Text, out double annualFlow) || annualFlow<=0 ||
+    !double.TryParse(textBox6.Text, out double basinArea) || basinArea<=0)
             {
                 MessageBox.Show("Невірний формат даних.");
                 return;

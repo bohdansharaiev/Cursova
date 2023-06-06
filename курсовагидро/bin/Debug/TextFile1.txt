@@ -16,6 +16,8 @@ River,Zambezi,2574,1060,Zambia,40
 River,Great Salt Lake,3034,4000,United States,40
 River,Dnieperу,2290,1740,Ukraine,40
 River,Tigris,2000,986,Iraq,40
+River,1,2,2,2,2
+River,2,2,2,2,2
 Lake,Tanganyika,6650,2830,Egypt,50
 Lake,Poyang,6300,3080,China,50
 Lake,Mississippi,6275,16500,United States,50
@@ -67,6 +69,7 @@ Lake,Malawi,29,600, 706,40
 Lake,Winnipeg,23,553, 435,40
 Lake,Erie,25,667, 388,40
 Lake,Assad,2567,2341,India,345
+Lake,2,2,2,к,2
 Sea,Yellow Sea,6300,3080,China,120
 Sea,Gulf of Mexico,6275,16500,United States,120
 Sea,Kara Sea,5545,19320,Russia,120
@@ -121,3 +124,4 @@ Sea,North Sea,570,0, 575,120
 Sea,Baltic Sea,412,0, 464,120
 Sea,Persian Gulf,251,0, 17,120
 Sea,Red Sea,1230,27,Egypt,209
+Sea,Кук,2,2,к,1

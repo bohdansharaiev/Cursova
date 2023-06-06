@@ -38,9 +38,6 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing.Common, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Drawing.Common.7.0.0\lib\net462\System.Drawing.Common.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -136,7 +133,6 @@
     <None Include="Resources\sea_image.jpg" />
     <None Include="Resources\pngtree-search-vector-icon-png-image_696422.jpg" />
     <None Include="Resources\mountains-nature-sky-river-beautiful-scenery-wallpaper-preview.jpg" />
-    <None Include="Resources\Без названия %281%29.jpg" />
     <None Include="Resources\lovepik-smoke-color-mobile-wallpaper-background-image_400951853.jpg" />
     <None Include="Resources\1625006541_28-phonoteka_org-p-oboi-gradient-vertikalnie-krasivo-28.png" />
     <None Include="Resources\radial-gradient-top-left.png" />

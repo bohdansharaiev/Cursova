@@ -310,7 +310,9 @@ namespace курсовагидро
                         if (river.Name.ToLower().IndexOf(searchText) >= 0)
                         {
                             table.Rows.Add(river.Name,
-                                river.Countries, river.Length, river.Flow, river.AnnualFlow,river.BasinArea);
+                                river.Countries, river.Length, river.Flow, 
+                                river.AnnualFlow, river.BasinArea);
+
                         }
                     }
 
